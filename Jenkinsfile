@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Update environment') {
             steps {
-                sh 'sed -i "/.*apiUrl.*/apiUrl=\'http://localhost:8090\'" src/environment/environment.ts'
-                sh 'cat src/environment/environment.ts'
+                sh 'sed -i "/.*apiUrl.*/apiUrl=\'http://localhost:8090\'" src/environments/environment.ts'
+                sh 'cat src/environments/environment.ts'
             }
         }
     }
