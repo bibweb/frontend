@@ -8,16 +8,13 @@ pipeline {
                 sh 'cat src/environments/environment.ts'
             }
         }
-    }
 
-    stages {
-        stage('Docker image')
-        steps {
-            sh 'docker build -t zuehlke/bibweb-frontend:dev .'
-        }
-    }
+        stage('Docker image') {
+			steps {
+				sh 'docker build -t zuehlke/bibweb-frontend:dev .'
+			}
+		}
 
-    stages {
         stage('Deploy Docker local') {
             steps {
                 sh 'docker stop bibweb-frontend || true && docker rm -f bibweb-frontend || true'
@@ -25,4 +22,5 @@ pipeline {
             }
         }
     }
+
 }
