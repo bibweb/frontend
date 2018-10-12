@@ -1,0 +1,23 @@
+<div *ngIf="book">
+<div>
+	<label>Id: {{book.id}}</label>
+</div>
+<div>
+	<label>Title: <input [(ngModel)]="book.title" placeholder="title" /></label>
+</div>
+<div>
+	<label>ISBN: <input [(ngModel)]="book.isbn" placeholder="isbn" /></label>
+</div>
+<div>
+	<label>Number of pages: <input [(ngModel)]="book.numberOfPages" placeholder="numberOfPages" /></label>
+</div>
+<div>
+	<label>ISBN: <input [(ngModel)]="book.releaseYear" placeholder="releaseYear" /></label>
+</div>
+
+<br />
+
+<button class="btn btn-success" (click)="updateBook();">Save</button>
+</div>
+<br/>
+<button class="btn" (click)="goBack();">Go back</button>
