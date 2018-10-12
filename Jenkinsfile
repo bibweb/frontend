@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Update environment') {
             steps {
-                sh 'sed -i "/apiUrl/c\\apiUrl=\'http://jenkins:8090\'" src/environments/environment.ts'
+                sh 'sed -i "/apiUrl/c\\apiUrl: \'http://jenkins:8090\'" src/environments/environment.ts'
                 sh 'cat src/environments/environment.ts'
             }
         }

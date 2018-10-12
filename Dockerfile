@@ -16,5 +16,8 @@ RUN npm install -g @angular/cli@1.7.1
 # add app
 COPY . /usr/src/app
 
+# expose port for access
+EXPOSE 4200
+
 # start app
 CMD ng serve --host 0.0.0.0
