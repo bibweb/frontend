@@ -10,7 +10,7 @@ pipeline {
         }
     }
 
-    /*stages {
+    stages {
         stage('Docker image')
         steps {
             sh 'docker build -t zuehlke/bibweb-frontend:dev .'
@@ -24,5 +24,5 @@ pipeline {
                 sh 'docker run --name=bibweb-frontend --restart unless-stopped -d -p 4200:4200 zuehlke/bibweb-frontend:dev'
             }
         }
-    }*/
+    }
 }
