@@ -1,4 +1,5 @@
 #!/bin/sh
 ls -l /usr/share/nginx/html/
-sed -i "/apiUrl: /c\\apiUrl: \'$API_URL\'" /usr/share/nginx/html/main.js
+mainFile="$(find /usr/share/nginx/html/ -name main*.js)"
+sed -i -E "s|bibwebApiUrl:[ ]*[\"\'][a-zA-Z0-9.\/:]*[\"\']|bibwebApiUrl: \'$API_URL\'|" ${mainFile}
 nginx -g "daemon off;"

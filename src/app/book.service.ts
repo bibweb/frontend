@@ -15,7 +15,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class BookService {
 
-  private booksUrl = environment.apiUrl + '/book';  // URL to web api
+  private booksUrl = environment.bibwebApiUrl + '/book';  // URL to web api
 
   constructor(
     private http: HttpClient) { }

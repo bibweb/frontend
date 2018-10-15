@@ -14,7 +14,7 @@ RUN cd /app && npm set progress=false && npm install
 
 COPY . /app
 
-RUN cd /app && npm run build --env=prod
+RUN cd /app && npm run ng build -- --prod
 
 #==================== Setting up stage ====================
 FROM nginx:alpine
