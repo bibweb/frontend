@@ -1,23 +1,33 @@
-# base image
-FROM node:9.6.1
+#==================== Building Stage ================================================
 
-# set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+# Create the image based on the official Node 8.9.0 image from Dockerhub
+FROM node:9.6.1 as node
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# Create a directory where our app will be placed. This might not be necessary
+RUN mkdir -p /app
 
-# install and cache app dependencies
-COPY package.json /usr/src/app/package.json
+# Change directory so that our commands run inside this new directory
+WORKDIR /app
+
+# Copy dependency definitions
+COPY package.json /app
+
+# Install dependencies using npm
 RUN npm install
-RUN npm install -g @angular/cli@1.7.1
 
-# add app
-COPY . /usr/src/app
+# Get all the code needed to run the app
+COPY . /app
 
-# expose port for access
+# Expose the port the app runs in
 EXPOSE 4200
 
-# start app
-CMD ng serve --port 4200 --host 0.0.0.0 --disable-host-check
+#Build the app
+RUN npm run build
+
+#==================== Setting up stage ====================
+# Create image based on the official nginx - Alpine image
+FROM nginx:1.15.5-alpine
+
+COPY --from=node /app/dist/ /usr/share/nginx/html
+
+COPY ./nginx-to-do-app.conf /etc/nginx/conf.d/default.conf
