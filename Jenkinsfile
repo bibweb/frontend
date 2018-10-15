@@ -12,7 +12,7 @@ pipeline {
 		stage('Docker image') {
 			steps {
 				sh 'docker build -t zuehlke/bibweb-frontend .'
-				sh 'docker image prune --filter label=stage=intermediate'
+				sh 'docker image prune -f --filter label=stage=intermediate'
 			}
 		}
 
