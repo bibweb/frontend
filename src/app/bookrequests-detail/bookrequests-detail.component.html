@@ -1,8 +1,10 @@
 <div *ngIf="bookRequest">
+  <h2>BookRequest Detail</h2>
   <div>
     <label>Id: {{bookRequest.id}}</label>
   </div>
   <div>
     <label>ISBN: {{bookRequest.isbn}}</label>
   </div>
+  <button class="btn btn-primary" (click)="goBack();">Go back</button>
 </div>

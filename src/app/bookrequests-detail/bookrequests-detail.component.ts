@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {BookRequest} from '../model/bookRequest';
 import {ActivatedRoute} from '@angular/router';
 import {BookrequestService} from '../service/bookrequest.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-bookrequests-detail',
@@ -12,7 +13,7 @@ export class BookrequestsDetailComponent implements OnInit {
   @Input() bookRequest: BookRequest;
 
 
-  constructor(private bookRequestService: BookrequestService, private route: ActivatedRoute) {
+  constructor(private bookRequestService: BookrequestService, private route: ActivatedRoute, private location: Location) {
   }
 
   ngOnInit() {
@@ -23,6 +24,10 @@ export class BookrequestsDetailComponent implements OnInit {
     const bookRequestId: number = +this.route.snapshot.paramMap.get('id');
     this.bookRequestService.getBookRequest(bookRequestId).subscribe(bookRequest => this.bookRequest = bookRequest);
 
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
