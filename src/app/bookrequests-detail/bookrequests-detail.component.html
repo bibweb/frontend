@@ -6,5 +6,12 @@
   <div>
     <label>ISBN: {{bookRequest.isbn}}</label>
   </div>
-  <button class="btn btn-primary" (click)="goBack();">Go back</button>
+  <div>
+    <label>State: {{bookRequestStateStrings.get(bookRequest.state)}}</label>
+  </div>
+  <button class="btn btn-primary mr-1" (click)="goBack();">Go back</button>
+  <button class="btn btn-primary mr-1" (click)="acceptBookRequest();" *ngIf="bookRequest.state === 0">
+    Accept BookRequest</button>
+  <button class="btn btn-primary" (click)="declineBookRequest();" *ngIf="bookRequest.state === 0">
+    Decline BookRequest</button>
 </div>

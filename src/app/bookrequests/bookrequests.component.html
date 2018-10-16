@@ -14,6 +14,7 @@
     <th scope="col">#</th>
     <th scope="col">ISBN</th>
     <th scope="col">User</th>
+    <th scope="col">State</th>
   </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
     <td>{{bookRequest.id}}</td>
     <td>{{bookRequest.isbn}}</td>
     <td>{{bookRequest.user}}</td>
+    <td>{{bookRequestStateStrings.get(bookRequest.state)}}</td>
   </tr>
   </tbody>
 </table>
