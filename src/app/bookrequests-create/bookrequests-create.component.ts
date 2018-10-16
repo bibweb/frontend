@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BookrequestService} from '../service/bookrequest.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {BookRequest} from '../model/bookRequest';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-bookrequests-create',
@@ -12,7 +12,7 @@ import {BookRequest} from '../model/bookRequest';
 export class BookrequestsCreateComponent implements OnInit {
 
 
-  constructor(private router: Router, private bookRequestService: BookrequestService) { }
+  constructor(private router: Router, private bookRequestService: BookrequestService, private location: Location) { }
 
   model: BookRequest;
 
@@ -25,4 +25,9 @@ export class BookrequestsCreateComponent implements OnInit {
     this.bookRequestService.createBookRequest(this.model)
       .subscribe(data => this.router.navigate(['bookrequests']));
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }
