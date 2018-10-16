@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  bibwebApiUrl: 'http://localhost:8080'
+  bibwebApiUrl: 'https://localhost:8443'
 };
 
 /*
