@@ -21,7 +21,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(loginUser: LoginUser): Observable<void> {
-	console.log(loginUser.username + " " + loginUser.password);
 	return this.http.post(this.authUrl, loginUser, httpOptions).pipe(
       tap(res => console.log(`logged in user ${loginUser.username}`)),
       catchError(this.handleError<any>('login'))
