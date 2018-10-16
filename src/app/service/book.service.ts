@@ -1,27 +1,28 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
 
-import { Book } from './book';
+import {Book} from '../model/book';
 
-import { environment } from '../environments/environment';
+import {environment} from '../../environments/environment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class BookService {
 
   private booksUrl = environment.bibwebApiUrl + '/book';  // URL to web api
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) {
+  }
 
   /** GET books from the server */
-  getBooks (): Observable<Book[]> {
+  getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksUrl)
       .pipe(
         tap(books => console.log('fetched books')),
@@ -31,8 +32,8 @@ export class BookService {
 
   /** GET one book by id from the server */
   getBook(id: number): Observable<Book> {
-	  const url = this.booksUrl + '/' + id;
-	  return this.http.get<Book>(url)
+    const url = this.booksUrl + '/' + id;
+    return this.http.get<Book>(url)
       .pipe(
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
@@ -41,7 +42,7 @@ export class BookService {
         catchError(this.handleError<Book>(`getBook id=${id}`))
       );
   }
-  
+
   updateBook(book: Book): Observable<any> {
     return this.http.put(this.booksUrl + '/' + book.id, book, httpOptions).pipe(
       tap(_ => console.log(`updated book id=${book.id}`)),
@@ -55,7 +56,7 @@ export class BookService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

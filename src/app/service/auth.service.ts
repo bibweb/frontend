@@ -5,9 +5,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import * as moment from "moment";
 
-import { LoginUser } from './loginUser';
+import { LoginUser } from '../model/loginUser';
 
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

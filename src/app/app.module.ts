@@ -1,17 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
-import { AuthInterceptor } from './auth-interceptor';
+import {AuthInterceptor} from './auth-interceptor';
 
-import { AppComponent } from './app.component';
-import { BooksComponent } from './books/books.component';
-import { AppRoutingModule } from './app-routing.module';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { LoginComponent } from './login/login.component';
-import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
-import { LoggedInGuard} from './loggedin-guard';
+import {AppComponent} from './app.component';
+import {BooksComponent} from './books/books.component';
+import {AppRoutingModule} from './app-routing.module';
+import {BookDetailComponent} from './book-detail/book-detail.component';
+import {LoginComponent} from './login/login.component';
+import {NavbarMenuComponent} from './navbar-menu/navbar-menu.component';
+import {LoggedInGuard} from './loggedin-guard';
+import {BookrequestsComponent} from './bookrequests/bookrequests.component';
+import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-detail.component';
+import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,16 @@ import { LoggedInGuard} from './loggedin-guard';
     BooksComponent,
     BookDetailComponent,
     LoginComponent,
-    NavbarMenuComponent
+    NavbarMenuComponent,
+    BookrequestsComponent,
+    BookrequestsDetailComponent,
+    BookrequestsCreateComponent
   ],
   imports: [
-  BrowserModule,
-  HttpClientModule,
-  AppRoutingModule,
-  FormsModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [ {
 	provide: HTTP_INTERCEPTORS,
@@ -35,4 +41,5 @@ import { LoggedInGuard} from './loggedin-guard';
   LoggedInGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

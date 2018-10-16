@@ -3,8 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Book } from '../book';
-import { BookService } from '../book.service';
+import { Book } from '../model/book';
+import { BookService } from '../service/book.service';
 
 @Component({
   selector: 'app-book-detail',
