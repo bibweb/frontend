@@ -34,7 +34,10 @@ export class AuthService {
   }
   
   public isLoggedIn() {
-        return moment().isBefore(this.getExpiration());
+	if(localStorage.getItem("expires_at") === null) {
+		return false;
+	}
+	return moment().isBefore(this.getExpiration());
   }
   
   public logout(): void {
