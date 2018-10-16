@@ -3,10 +3,8 @@ import {Injectable} from '@angular/core';
 
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {BookRequest} from '../model/bookRequest';
+import {BookRequest, BookRequestState} from '../model/bookRequest';
 import {HttpClient} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {Book} from '../model/book';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +26,16 @@ export class BookrequestService {
 
   createBookRequest(bookRequest: BookRequest): Observable<any> {
     return this.http.post(this.bookRequestsURL, bookRequest);
+  }
+
+  acceptBookRequest(bookRequest: BookRequest): Observable<any>  {
+    bookRequest.state = BookRequestState.ACCEPTED;
+    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id, bookRequest);
+  }
+
+  declineBookRequest(bookRequest: BookRequest): Observable<any> {
+    bookRequest.state = BookRequestState.DECLINED;
+    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id, bookRequest);
   }
 }
 
