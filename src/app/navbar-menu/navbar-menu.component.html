@@ -1,0 +1,4 @@
+<form class="form-inline">
+    <span *ngIf="!isLoggedIn()"><button (click)="login()" class="btn btn-outline-success my-2 my-sm-0">Login</button></span>
+	<span *ngIf="isLoggedIn()"><button (click)="logout()" class="btn btn-outline-warning my-2 my-sm-0">Logout</button></span>
+</form>
