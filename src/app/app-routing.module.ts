@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {LoginComponent} from './login/login.component';
-import {LoggedInGuard} from './loggedin-guard';
+import {AuthGuard} from './auth-guard';
 import {BooksComponent} from './books/books.component';
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BookrequestsComponent} from './bookrequests/bookrequests.component';
@@ -11,11 +11,11 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
 
 const routes: Routes = [
   {path: '', redirectTo: '/books', pathMatch: 'full'},
-  {path: 'books', component: BooksComponent, canActivate: [LoggedInGuard]},
-  {path: 'books/:id', component: BookDetailComponent, canActivate: [LoggedInGuard]},
-  {path: 'bookrequests', component: BookrequestsComponent, canActivate: [LoggedInGuard]},
-  {path: 'bookrequests/new', component: BookrequestsCreateComponent, canActivate: [LoggedInGuard]},
-  {path: 'bookrequests/:id', component: BookrequestsDetailComponent, canActivate: [LoggedInGuard]},
+  {path: 'books', component: BooksComponent, canActivate: [AuthGuard]},
+  {path: 'books/:id', component: BookDetailComponent, canActivate: [AuthGuard]},
+  {path: 'bookrequests', component: BookrequestsComponent, canActivate: [AuthGuard]},
+  {path: 'bookrequests/new', component: BookrequestsCreateComponent, canActivate: [AuthGuard]},
+  {path: 'bookrequests/:id', component: BookrequestsDetailComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
 ];
 

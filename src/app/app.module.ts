@@ -11,7 +11,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {LoginComponent} from './login/login.component';
 import {NavbarMenuComponent} from './navbar-menu/navbar-menu.component';
-import {LoggedInGuard} from './loggedin-guard';
+import {AuthGuard} from './auth-guard';
 import {BookrequestsComponent} from './bookrequests/bookrequests.component';
 import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-detail.component';
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
@@ -38,7 +38,7 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
 	useClass: AuthInterceptor,
 	multi: true
   },
-  LoggedInGuard],
+  AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
