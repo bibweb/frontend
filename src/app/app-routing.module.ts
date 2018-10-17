@@ -13,7 +13,7 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
 import {UserRoles} from './model/userRoles';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/books', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
 
   // User routes
   {
