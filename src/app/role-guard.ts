@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import {AuthService} from './service/auth.service';
-
-import {AuthService} from './service/auth.service';
-import {UserRole, UserRolesStrings} from './model/userRoles';
+import {UserRoles, UserRolesStrings} from './model/userRoles';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
@@ -12,7 +10,6 @@ export class RoleGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
 	if(!this.auth.isLoggedIn()) {
-		redirectToLogin();
 		return false;
 	}
 	
@@ -22,10 +19,6 @@ export class RoleGuard implements CanActivate {
       return false;
     }
     return true;
-  }
-  
-  redirectToLogin() : void {
-	  
   }
 
 }

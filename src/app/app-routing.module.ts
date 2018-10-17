@@ -15,10 +15,10 @@ import {UserRoles} from './model/userRoles';
 const routes: Routes = [
   {path: '', redirectTo: '/books', pathMatch: 'full'},
   {path: 'books', component: BooksComponent, canActivate: [AuthGuard]},
-  {path: 'books/:id', component: BookDetailComponent, canActivate: [RoleGuard], data: {expectedRole: UserRoles.ADMIN},
+  {path: 'books/:id', component: BookDetailComponent, canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}},
   {path: 'bookrequests', component: BookrequestsComponent, canActivate: [AuthGuard]},
   {path: 'bookrequests/new', component: BookrequestsCreateComponent, canActivate: [AuthGuard]},
-  {path: 'bookrequests/:id', component: BookrequestsDetailComponent, canActivate: [RoleGuard], data: {expectedRole: UserRoles.ADMIN},
+  {path: 'bookrequests/:id', component: BookrequestsDetailComponent, canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}},
   {path: 'login', component: LoginComponent}
 ];
 
