@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { LoginUser } from '../model/loginUser';
 import { AuthService } from '../service/auth.service';
@@ -12,14 +12,18 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  returnUrl: string;
   model = new LoginUser('','');
 
   constructor(private location: Location,
 			  private authService: AuthService,
-			  private router: Router) {
+			  private router: Router,
+			  private route: ActivatedRoute) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+	this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
+  }
   
   login(): void {
 	if(this.model.username && this.model.password) {
@@ -27,7 +31,7 @@ export class LoginComponent implements OnInit {
 			.subscribe(
 				(retVal) => {
 					this.authService.setSession(retVal["token"], retVal["expiresIn"]);
-					this.router.navigateByUrl('books');
+					this.router.navigateByUrl(this.returnUrl);
 				}
 			);
 	}
