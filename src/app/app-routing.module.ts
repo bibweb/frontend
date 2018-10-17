@@ -14,12 +14,21 @@ import {UserRoles} from './model/userRoles';
 
 const routes: Routes = [
   {path: '', redirectTo: '/books', pathMatch: 'full'},
-  {path: 'books', component: BooksComponent, canActivate: [AuthGuard]},
-  {path: 'books/:id', component: BookDetailComponent, canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}},
-  {path: 'bookrequests', component: BookrequestsComponent, canActivate: [AuthGuard]},
-  {path: 'bookrequests/new', component: BookrequestsCreateComponent, canActivate: [AuthGuard]},
-  {path: 'bookrequests/:id', component: BookrequestsDetailComponent, canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}},
-  {path: 'login', component: LoginComponent}
+  
+  // Admin routes
+  {path: '', canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}, children: [
+	  {path: 'books/:id', component: BookDetailComponent},
+	  {path: 'bookrequests/:id', component: BookrequestsDetailComponent}
+  ]},
+  
+  // User routes
+  {path: '', canActivate: [AuthGuard], children: [
+  	  {path: 'books', component: BooksComponent},
+	  	  {path: 'bookrequests', component: BookrequestsComponent},
+	  {path: 'bookrequests/new', component: BookrequestsCreateComponent}
+  ]},
+  
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
