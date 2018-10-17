@@ -19,6 +19,7 @@ export class BookrequestsCreateComponent implements OnInit {
 
   ngOnInit() {
     this.model = new BookRequest();
+    this.model.user = '';
   }
 
   createBookRequest() {

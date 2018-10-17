@@ -20,15 +20,15 @@ const routes: Routes = [
     path: '', canActivate: [AuthGuard], children: [
       {path: 'books', component: BooksComponent},
       {path: 'bookrequests', component: BookrequestsComponent},
-      {path: 'bookrequests/new', component: BookrequestsCreateComponent}
+      {path: 'bookrequests/new', component: BookrequestsCreateComponent},
+      {path: 'bookrequests/:id', component: BookrequestsDetailComponent}
     ]
   },
 
   // Admin routes
   {
     path: '', canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}, children: [
-      {path: 'books/:id', component: BookDetailComponent},
-      {path: 'bookrequests/:id', component: BookrequestsDetailComponent}
+      {path: 'books/:id', component: BookDetailComponent}
     ]
   },
 
