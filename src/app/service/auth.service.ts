@@ -45,6 +45,21 @@ export class AuthService {
 	localStorage.removeItem('expires_at');
   }
   
+  public hasRole(role: string) {
+	if(!this.isLoggedIn()) {
+		return false;
+	}		
+	
+	const token = localStorage.getItem('id_token');
+	const jwtData = token.split('.')[1]
+	const decodedJwtJsonData = window.atob(jwtData)
+	const decodedJwtData = JSON.parse(decodedJwtJsonData)
+	
+	const retVal = decodedJwtData.scopes.toString().includes(role.toString());
+
+	return retVal;
+  }
+  
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
