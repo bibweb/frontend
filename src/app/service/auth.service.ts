@@ -59,6 +59,15 @@ export class AuthService {
 
 	return retVal;
   }
+
+  public getUserName(): string {
+    const token = localStorage.getItem('id_token');
+    const jwtData = token.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    const decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+    return decodedJwtData.sub;
+  }
   
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
