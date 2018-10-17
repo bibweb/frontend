@@ -10,7 +10,7 @@ import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-de
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/books', pathMatch: 'full'},
   {path: 'books', component: BooksComponent, canActivate: [LoggedInGuard]},
   {path: 'books/:id', component: BookDetailComponent, canActivate: [LoggedInGuard]},
   {path: 'bookrequests', component: BookrequestsComponent, canActivate: [LoggedInGuard]},
