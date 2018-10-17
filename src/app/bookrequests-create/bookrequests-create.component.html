@@ -8,11 +8,6 @@
       <input type="text" class="form-control" id="isbn" required [(ngModel)]="model.isbn" name="isbn">
     </div>
 
-    <div class="form-group">
-      <label for="user">User</label>
-      <input type="text" class="form-control" id="user" required [(ngModel)]="model.user" name="user">
-    </div>
-
     <button type="submit" class="btn btn-primary" [disabled]="!bookRequestForm.form.valid">Submit</button>
     <button class="btn" (click)="goBack();">Go back</button>
   </form>
