@@ -1,20 +1,41 @@
 <div *ngIf="book">
-<div>
-	<label>Id: {{book.id}}</label>
-</div>
-<div>
-	<label>Title: <input [(ngModel)]="book.title" placeholder="title" /></label>
-</div>
-<div>
-	<label>ISBN: <input [(ngModel)]="book.isbn" placeholder="isbn" /></label>
-</div>
-<div>
-	<label>Number of pages: <input [(ngModel)]="book.numberOfPages" placeholder="numberOfPages" /></label>
-</div>
-<div>
-	<label>ISBN: <input [(ngModel)]="book.releaseYear" placeholder="releaseYear" /></label>
-</div>
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">Id</label>
+		<div class="col-sm-9">
+			<input type="text" readonly class="form-control-plaintext" [(ngModel)]="book.id" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">Title</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" [(ngModel)]="book.title" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">ISBN</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" [(ngModel)]="book.isbn" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">Number of pages</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" [(ngModel)]="book.numberOfPages" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label">Release Year</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" [(ngModel)]="book.releaseYear" />
+		</div>
+	</div>
 </div>
 <br/>
-<button class="btn btn-success" (click)="updateBook();">Save</button> &nbsp;
-<button class="btn" (click)="goBack();">Go back</button>
+<div class="row">
+	<div class="col-sm-2">
+		<button class="btn btn-success btn-block" (click)="updateBook();">Save</button>
+	</div>
+	<div class="col-sm-2">
+		<button class="btn btn-block" (click)="goBack();">Go back</button>
+	</div>
+</div>
