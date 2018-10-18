@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BookRequest, BookRequestStateStrings} from '../model/bookRequest';
+import {BookRequest, BookRequestState, BookRequestStateStrings} from '../model/bookRequest';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookrequestService} from '../service/bookrequest.service';
 import {Location} from '@angular/common';
@@ -12,6 +12,7 @@ import {Location} from '@angular/common';
 export class BookrequestsDetailComponent implements OnInit {
   @Input() bookRequest: BookRequest;
   bookRequestStateStrings;
+  stateNew: BookRequestState = BookRequestState.NEW;
 
 
   constructor(private bookRequestService: BookrequestService, private route: ActivatedRoute, private location: Location,

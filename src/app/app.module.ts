@@ -16,6 +16,7 @@ import {RoleGuard} from './role-guard';
 import {BookrequestsComponent} from './bookrequests/bookrequests.component';
 import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-detail.component';
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
+import {HasRoleDirective} from './directive/has-role.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
     NavbarMenuComponent,
     BookrequestsComponent,
     BookrequestsDetailComponent,
-    BookrequestsCreateComponent
+    BookrequestsCreateComponent,
+    HasRoleDirective
   ],
   imports: [
     BrowserModule,
@@ -34,13 +36,13 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [ {
-	provide: HTTP_INTERCEPTORS,
-	useClass: AuthInterceptor,
-	multi: true
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
   },
-  AuthGuard,
-  RoleGuard],
+    AuthGuard,
+    RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
