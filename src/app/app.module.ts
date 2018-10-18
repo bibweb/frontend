@@ -8,7 +8,7 @@ import {AuthInterceptor} from './auth-interceptor';
 import {AppComponent} from './app.component';
 import {BooksComponent} from './books/books.component';
 import {AppRoutingModule} from './app-routing.module';
-import {BookDetailComponent} from './book-detail/book-detail.component';
+import {BookUpdateComponent} from './book-update/book-update.component';
 import {LoginComponent} from './login/login.component';
 import {NavbarMenuComponent} from './navbar-menu/navbar-menu.component';
 import {AuthGuard} from './auth-guard';
@@ -22,7 +22,7 @@ import {HasRoleDirective} from './directive/has-role.directive';
   declarations: [
     AppComponent,
     BooksComponent,
-    BookDetailComponent,
+    BookUpdateComponent,
     LoginComponent,
     NavbarMenuComponent,
     BookrequestsComponent,

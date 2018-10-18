@@ -7,11 +7,11 @@ import { Book } from '../model/book';
 import { BookService } from '../service/book.service';
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+  selector: 'app-book-update',
+  templateUrl: './book-update.component.html',
+  styleUrls: ['./book-update.component.css']
 })
-export class BookDetailComponent implements OnInit {
+export class BookUpdateComponent implements OnInit {
   @Input() book: Book;
 
   constructor(

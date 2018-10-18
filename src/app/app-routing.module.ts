@@ -5,7 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth-guard';
 import {RoleGuard} from './role-guard';
 import {BooksComponent} from './books/books.component';
-import {BookDetailComponent} from './book-detail/book-detail.component';
+import {BookUpdateComponent} from './book-update/book-update.component';
 import {BookrequestsComponent} from './bookrequests/bookrequests.component';
 import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-detail.component';
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   // Admin routes
   {
     path: '', canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}, children: [
-      {path: 'books/:id', component: BookDetailComponent}
+      {path: 'books/:id/update', component: BookUpdateComponent}
     ]
   },
 
