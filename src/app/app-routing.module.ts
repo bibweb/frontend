@@ -6,6 +6,7 @@ import {AuthGuard} from './auth-guard';
 import {RoleGuard} from './role-guard';
 import {BooksComponent} from './books/books.component';
 import {BookUpdateComponent} from './book-update/book-update.component';
+import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BookrequestsComponent} from './bookrequests/bookrequests.component';
 import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-detail.component';
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path: 'books', component: BooksComponent},
       {path: 'bookrequests', component: BookrequestsComponent},
       {path: 'bookrequests/new', component: BookrequestsCreateComponent},
-      {path: 'bookrequests/:id', component: BookrequestsDetailComponent}
+      {path: 'bookrequests/:id', component: BookrequestsDetailComponent},
+	  {path: 'books/:id', component: BookDetailComponent}
     ]
   },
 
