@@ -11,16 +11,20 @@ export class BookrequestsComponent implements OnInit {
   bookRequests: BookRequest[];
   bookRequestStateStrings;
 
-  constructor(private bookRequestService: BookrequestService) { }
+  constructor(private bookRequestService: BookrequestService) {
+    this.bookRequestStateStrings = BookRequestStateStrings;
+  }
 
   ngOnInit() {
     this.getBookRequests();
-    this.bookRequestStateStrings = BookRequestStateStrings;
   }
 
   getBookRequests(): void {
     this.bookRequestService.getBookRequests()
-      .subscribe(bookRequests => this.bookRequests = bookRequests);
+      .subscribe(bookRequests => {
+          this.bookRequests = bookRequests;
+        },
+        err => console.log(err));
   }
 
 }
