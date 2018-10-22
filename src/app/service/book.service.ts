@@ -6,7 +6,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 
 import {Book} from '../model/book';
 
-import {environment} from '../../environments/environment';
+import {environment} from '@env/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

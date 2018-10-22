@@ -7,7 +7,7 @@ import * as moment from "moment";
 
 import { LoginUser } from '../model/loginUser';
 
-import { environment } from '../../environments/environment';
+import { environment } from '@env/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
