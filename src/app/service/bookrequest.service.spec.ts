@@ -1,6 +1,5 @@
 import {BookrequestService} from './bookrequest.service';
 import {BookRequest, BookRequestState} from '../model/bookRequest';
-import {HttpClientModule} from '@angular/common/http';
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
@@ -12,7 +11,6 @@ describe('BookrequestService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,
         HttpClientTestingModule
       ],
       providers: [
