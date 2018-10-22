@@ -16,24 +16,24 @@ export class BookrequestService {
   constructor(private http: HttpClient) {
   }
 
-  getBookRequests(): Observable<BookRequest[]> {
+  getBookRequests() {
     return this.http.get<BookRequest[]>(this.bookRequestsURL);
   }
 
-  getBookRequest(bookRequestId: number): Observable<BookRequest> {
+  getBookRequest(bookRequestId: number) {
     return this.http.get<BookRequest>(this.bookRequestsURL + '/' + bookRequestId);
   }
 
-  createBookRequest(bookRequest: BookRequest): Observable<any> {
-    return this.http.post(this.bookRequestsURL, bookRequest);
+  createBookRequest(bookRequest: BookRequest) {
+    return this.http.post<BookRequest>(this.bookRequestsURL, bookRequest);
   }
 
-  acceptBookRequest(bookRequest: BookRequest): Observable<any>  {
+  acceptBookRequest(bookRequest: BookRequest) {
     bookRequest.state = BookRequestState.ACCEPTED;
     return this.http.put(this.bookRequestsURL + '/' + bookRequest.id, bookRequest);
   }
 
-  declineBookRequest(bookRequest: BookRequest): Observable<any> {
+  declineBookRequest(bookRequest: BookRequest) {
     bookRequest.state = BookRequestState.DECLINED;
     return this.http.put(this.bookRequestsURL + '/' + bookRequest.id, bookRequest);
   }
