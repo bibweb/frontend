@@ -8,8 +8,8 @@
 	</div>
 
 	<form class="form-inline">
-    <span *ngIf="isLoggedIn()">{{userName}}&emsp;</span>
-		<span *ngIf="!isLoggedIn()"><button (click)="login()" class="btn btn-outline-success my-2 my-sm-0">Login</button></span>
-		<span *ngIf="isLoggedIn()"><button (click)="logout()" class="btn btn-outline-warning my-2 my-sm-0">Logout</button></span>
+    <span *ngIf="loggedIn" id="username">{{loggedInUserName}}</span>
+		<span *ngIf="!loggedIn"><button (click)="login()" class="btn btn-outline-success my-2 my-sm-0">Login</button></span>
+		<span *ngIf="loggedIn"><button (click)="logout()" class="btn btn-outline-warning my-2 my-sm-0">Logout</button></span>
 	</form>
 </nav>

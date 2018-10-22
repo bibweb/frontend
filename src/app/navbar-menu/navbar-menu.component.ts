@@ -9,25 +9,31 @@ import {AuthService} from '../service/auth.service';
   styleUrls: ['./navbar-menu.component.css']
 })
 export class NavbarMenuComponent implements OnInit {
-
-  userName: String;
+  loggedIn: boolean;
+  loggedInUserName: String;
 
   constructor(private authService: AuthService,
               private router: Router) {
+    this.loggedInUserName = '';
+    this.loggedIn = false;
   }
 
   ngOnInit() {
-    this.userName = '';
+    this.isLoggedIn();
   }
 
   isLoggedIn() {
-    const loggedIn: boolean = this.authService.isLoggedIn();
-    if (loggedIn) {
-      this.userName = this.authService.getUserName();
+    this.loggedIn = this.authService.isLoggedIn();
+    this.updateUserName();
+    return this.loggedIn;
+  }
+
+  private updateUserName() {
+    if (this.loggedIn) {
+      this.loggedInUserName = this.authService.getUserName();
     } else {
-      this.userName = '';
+      this.loggedInUserName = '';
     }
-    return loggedIn;
   }
 
   logout() {
