@@ -26,12 +26,11 @@ export class BookUpdateComponent implements OnInit {
 
   getBook(): void {
   	const id = +this.route.snapshot.paramMap.get('id');
-	console.log(id);
 	this.bookService.getBook(id).subscribe(book => this.book = book);
-	}
+  }
 
   updateBook(): void {
-  this.bookService.updateBook(this.book).subscribe(() => this.goBack());
+  	this.bookService.updateBook(this.book).subscribe(() => this.goBack());
   }
 
   goBack(): void {
