@@ -21,7 +21,7 @@ import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BooksListComponent} from './books-list/books-list.component';
 import {BooksSearchableListComponent} from './books-searchable-list/books-searchable-list.component';
 import {BookListFilterPipe} from './books-searchable-list/book-list-filter.pipe';
-import { ForbiddenPageAccessComponent } from './forbidden-page-access/forbidden-page-access.component';
+import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-page-access.component';
 
 @NgModule({
   declarations: [

@@ -5,22 +5,22 @@ import {AuthService} from './service/auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-	constructor(private authService: AuthService,
-				private router: Router) {
-		this.authService = authService;
-	}
+  constructor(private authService: AuthService,
+              private router: Router) {
+    this.authService = authService;
+  }
 
-	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-		if(this.authService.isLoggedIn()) {
-			return true;
-		}
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (this.authService.isLoggedIn()) {
+      return true;
+    }
 
-		this.router.navigateByUrl(
-			this.router.createUrlTree(
-				['/login'], {queryParams: {returnUrl: state.url}}
-			)
-		);
-		return false;
-	}
+    this.router.navigateByUrl(
+      this.router.createUrlTree(
+        ['/login'], {queryParams: {returnUrl: state.url}}
+      )
+    );
+    return false;
+  }
 
 }

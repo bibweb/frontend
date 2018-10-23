@@ -7,7 +7,7 @@ import * as moment from 'moment';
 
 import {LoginUser} from '../model/loginUser';
 
-import { environment } from '@env/environment';
+import {environment} from '@env/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -88,7 +88,7 @@ export class AuthService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      if(error.status === 401) {
+      if (error.status === 401) {
         this.failedLoginAttempts = this.failedLoginAttempts + 1;
         this.serverTemporarilyUnavailable = false;
       } else {
