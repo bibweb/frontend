@@ -4,6 +4,7 @@ import {BookrequestService} from '../service/bookrequest.service';
 import {Location} from '@angular/common';
 
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {BookRequestState} from '@app/model/bookRequest';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class BookrequestsCreateComponent {
     this.createForm = this.fb.group({
       'isbn': ['', Validators.required],
       'user': [''],
-      'state': ['']
+      'state': [BookRequestState.NEW]
     });
   }
 
