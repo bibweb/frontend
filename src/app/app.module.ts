@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import {AuthInterceptor} from './auth-interceptor';
@@ -19,7 +19,7 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
 import {HasRoleDirective} from './directive/has-role.directive';
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BooksListComponent} from './books-list/books-list.component';
-import {BooksSearchableListComponent } from './books-searchable-list/books-searchable-list.component';
+import {BooksSearchableListComponent} from './books-searchable-list/books-searchable-list.component';
 import {BookListFilterPipe} from './books-searchable-list/book-list-filter.pipe';
 import { ForbiddenPageAccessComponent } from './forbidden-page-access/forbidden-page-access.component';
 
@@ -45,6 +45,7 @@ import { ForbiddenPageAccessComponent } from './forbidden-page-access/forbidden-
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -1,8 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BookrequestService} from '../service/bookrequest.service';
-import {BookRequest} from '../model/bookRequest';
+import {BookRequest, BookRequestState} from '../model/bookRequest';
 import {Location} from '@angular/common';
+
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {AuthService} from '@app/service/auth.service';
+
 
 @Component({
   selector: 'app-bookrequests-create',
@@ -10,24 +14,31 @@ import {Location} from '@angular/common';
   styleUrls: ['./bookrequests-create.component.css']
 })
 export class BookrequestsCreateComponent implements OnInit {
+  createForm: FormGroup;
 
-
-  constructor(private router: Router, private bookRequestService: BookrequestService, private location: Location) { }
-
-  model: BookRequest;
-
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private bookRequestService: BookrequestService,
+              private location: Location,
+              private authService: AuthService) {
+    this.createForm = this.fb.group({
+      'isbn': ['', Validators.required],
+      'user': ['', Validators.required],
+      'state': ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
-    this.model = new BookRequest();
-    this.model.user = '';
+    this.createForm.patchValue({'user': this.authService.getUserName(), 'state': BookRequestState.NEW});
   }
 
   createBookRequest() {
-    this.bookRequestService.createBookRequest(this.model)
-      .subscribe(data => this.router.navigate(['bookrequests']));
+    this.bookRequestService.createBookRequest(this.createForm.value).subscribe(
+      data => this.router.navigate(['/bookrequests'])
+    );
   }
 
-  goBack(): void {
+  goBack() {
     this.location.back();
   }
 

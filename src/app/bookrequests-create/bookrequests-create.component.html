@@ -1,14 +1,19 @@
-<div class="container">
-  <h2>Create a book request</h2>
-</div>
+<h2 >Create a BookRequest</h2>
+<br>
 <div>
-  <form (ngSubmit)="createBookRequest();" #bookRequestForm="ngForm">
-    <div class="form-group">
-      <label for="isbn">ISBN</label>
-      <input type="text" class="form-control" id="isbn" required [(ngModel)]="model.isbn" name="isbn">
+  <form [formGroup]="createForm" (ngSubmit)="createBookRequest()">
+    <div class="form-group row">
+      <label class="col-form-label col-sm-2">ISBN:</label>
+      <input class="col-sm-5" type="text" formControlName="isbn"/>
     </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!bookRequestForm.form.valid">Submit</button>
+    <div class="form-group row">
+      <label class="col-form-label col-sm-2">User:</label>
+      <input class="col-sm-5" type="text" formControlName="user" readonly/>
+    </div>
+    <input type="hidden" formControlName="state"/>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-primary col-sm-2 mr-2" [disabled]="!createForm.valid">Create</button>
+      <button type="button" class="btn btn-secondary col-sm-2" (click)="goBack()">Go back</button>
+    </div>
   </form>
-  <button class="btn" (click)="goBack();">Go back</button>
 </div>
