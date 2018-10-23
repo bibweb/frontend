@@ -6,7 +6,7 @@ pipeline {
 	      docker 'circleci/node:stretch-browsers'
 	    }
 	    steps {
-	      sh 'yarn'
+	      sh 'yarnd'
 	      stash includes: 'node_modules/', name: 'node_modules'
 	    }
     }
@@ -39,6 +39,7 @@ pipeline {
       }
     }
     stage('Deploy Docker local') {
+      agent any
       steps {
         sh 'docker service update --env-add "JENKINS_META=$JOB_NAME[$BUILD_NUMBER]" bibweb-frontend'
       }
