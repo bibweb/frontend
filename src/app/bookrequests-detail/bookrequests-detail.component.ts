@@ -10,8 +10,8 @@ import {Location} from '@angular/common';
   styleUrls: ['./bookrequests-detail.component.css']
 })
 export class BookrequestsDetailComponent implements OnInit {
-  @Input() bookRequest: BookRequest;
-  bookRequestStateStrings;
+  bookRequest: BookRequest;
+  bookRequestStateStrings = BookRequestStateStrings;
   stateNew: BookRequestState = BookRequestState.NEW;
 
 
@@ -21,12 +21,18 @@ export class BookrequestsDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getBookRequestDetail();
-    this.bookRequestStateStrings = BookRequestStateStrings;
   }
 
   getBookRequestDetail(): void {
     const bookRequestId: number = +this.route.snapshot.paramMap.get('id');
-    this.bookRequestService.getBookRequest(bookRequestId).subscribe(bookRequest => this.bookRequest = bookRequest);
+    this.bookRequestService.getBookRequest(bookRequestId).subscribe(
+      bookRequest => {
+        this.bookRequest = bookRequest;
+      },
+      err => {
+        console.log(err);
+        this.router.navigate(['/bookrequests']);
+      });
   }
 
   goBack(): void {

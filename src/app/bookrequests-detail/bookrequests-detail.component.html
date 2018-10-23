@@ -1,19 +1,32 @@
+<h2>BookRequest Detail</h2>
+<br>
 <div *ngIf="bookRequest">
-  <h2>BookRequest Detail</h2>
-  <div>
-    <label>Id: {{bookRequest.id}}</label>
+  <div class="row">
+    <label class="col-form-label col-sm-2">Id:</label>
+    <label>{{bookRequest.id}}</label>
   </div>
-  <div>
-    <label>ISBN: {{bookRequest.isbn}}</label>
+  <div class="row">
+    <label class="col-form-label col-sm-2">ISBN:</label>
+    <label>{{bookRequest.isbn}}</label>
   </div>
-  <div>
-    <label>State: {{bookRequestStateStrings.get(bookRequest.state)}}</label>
+  <div class="row">
+    <label class="col-form-label col-sm-2">User:</label>
+    <label>{{bookRequest.user}}</label>
   </div>
-  <button class="btn btn-primary mr-1" (click)="goBack();">Go back</button>
-  <span *appHasRole="'ADMIN'">
-    <button class="btn btn-primary mr-1" (click)="acceptBookRequest();" *ngIf="bookRequest.state === stateNew">
-      Accept BookRequest</button>
-    <button class="btn btn-primary" (click)="declineBookRequest();" *ngIf="bookRequest.state === stateNew">
-    Decline BookRequest</button>
-  </span>
+  <div class="row">
+    <label class="col-form-label col-sm-2">State:</label>
+    <label>{{bookRequestStateStrings.get(bookRequest.state)}}</label>
+  </div>
+  <div class="row" *appHasRole="'ADMIN'">
+    <button class="btn btn-primary col-sm-2 mr-2" (click)="acceptBookRequest()" *ngIf="bookRequest.state === stateNew">
+      Accept BookRequest
+    </button>
+    <button class="btn btn-primary col-sm-2" (click)="declineBookRequest()" *ngIf="bookRequest.state === stateNew">
+      Decline BookRequest
+    </button>
+  </div>
+  <div class="row">
+    <button class="btn btn-secondary col-sm-2 mr-2 mt-4" (click)="goBack()">Go back</button>
+  </div>
 </div>
+
