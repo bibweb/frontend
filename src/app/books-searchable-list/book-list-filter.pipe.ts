@@ -13,7 +13,14 @@ export class BookListFilterPipe implements PipeTransform {
     searchText = searchText.toLowerCase();
 
     return items.filter( book => {
-      return book.title.toString().toLowerCase().includes(searchText.toString().toLowerCase());
+      return this.objectContains(book, searchText.toLowerCase());
     });
+  }
+
+  objectContains(obj, term: string): boolean {
+    for (let key in obj){
+        if (String(obj[key]).toLowerCase().includes(term)) return true;
+    }
+    return false;
   }
 }
