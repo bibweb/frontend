@@ -31,7 +31,11 @@ export class BookrequestsDetailComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.router.navigate(['/bookrequests']);
+        if (err.status === 403) {
+          this.router.navigate(['/forbidden']);
+        } else {
+          this.router.navigate(['/bookrequests']);
+        }
       });
   }
 
