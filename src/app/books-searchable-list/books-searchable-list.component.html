@@ -1,0 +1,3 @@
+<input type="text" class="form-control" [(ngModel)]="searchString" placeholder="Search by title..." />
+<br />
+<app-books-list [books]="books | bookListFilter : searchString" (book)="selectBook($event)"></app-books-list>

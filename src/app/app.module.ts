@@ -17,8 +17,10 @@ import {BookrequestsComponent} from './bookrequests/bookrequests.component';
 import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-detail.component';
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
 import {HasRoleDirective} from './directive/has-role.directive';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BooksListComponent } from './books-list/books-list.component';
+import {BookDetailComponent} from './book-detail/book-detail.component';
+import {BooksListComponent} from './books-list/books-list.component';
+import {BooksSearchableListComponent } from './books-searchable-list/books-searchable-list.component';
+import {BookListFilterPipe} from './books-searchable-list/book-list-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { BooksListComponent } from './books-list/books-list.component';
     BookrequestsCreateComponent,
     HasRoleDirective,
     BookDetailComponent,
-    BooksListComponent
+    BooksListComponent,
+    BooksSearchableListComponent,
+    BookListFilterPipe
   ],
   imports: [
     BrowserModule,
