@@ -46,10 +46,10 @@ pipeline {
     }
   }
   post {
-    agent any
     cleanup {
-        echo 'One way or another, I have finished'
-        deleteDir() /* clean up our workspace */
+      agent any
+      echo 'One way or another, I have finished'
+      deleteDir() /* clean up our workspace */
     }
   }
 }
