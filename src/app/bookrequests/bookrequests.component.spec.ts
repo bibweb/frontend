@@ -35,8 +35,8 @@ describe('BookRequest', () => {
 
   it('should get the BookRequests onInit()', async(() => {
     spy.getBookRequests.and.returnValue(of(<BookRequest[]>[
-      new BookRequest(1, '1321568351', 'user', BookRequestState.NEW),
-      new BookRequest(2, '4861311385', 'user', BookRequestState.ACCEPTED)
+      {id: 1, isbn: '1321568351', user: 'user', state: 0},
+      {id: 2, isbn: '4861311385', user: 'user', state: 1},
     ]));
     component.ngOnInit();
     expect(component.bookRequests.length).toBe(2);
@@ -44,8 +44,8 @@ describe('BookRequest', () => {
 
   it('should display the retrieved BookRequests', async(() => {
     spy.getBookRequests.and.returnValue(of(<BookRequest[]>[
-      new BookRequest(1, '1321568351', 'user', BookRequestState.NEW),
-      new BookRequest(2, '4861311385', 'user', BookRequestState.ACCEPTED)
+      {id: 1, isbn: '1321568351', user: 'user', state: 0},
+      {id: 2, isbn: '4861311385', user: 'user', state: 1},
     ]));
     fixture.detectChanges();
     const tableRows = fixture.nativeElement.querySelectorAll('tbody > tr');

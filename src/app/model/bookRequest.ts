@@ -3,13 +3,6 @@ export class BookRequest {
   isbn: string;
   user: string;
   state: BookRequestState = BookRequestState.NEW;
-
-  constructor(id: number, isbn: string, user: string, state: BookRequestState) {
-      this.id = id;
-      this.isbn = isbn;
-      this.user = user;
-      this.state = state;
-  }
 }
 
 export enum BookRequestState {
