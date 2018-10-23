@@ -1,0 +1,14 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Title</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books" (click)="selectBook(book)">
+      <td>{{book.id}}</td>
+      <td>{{book.title}}</td>
+    </tr>
+  </tbody>
+</table>

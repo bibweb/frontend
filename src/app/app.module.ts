@@ -18,6 +18,7 @@ import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-de
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
 import {HasRoleDirective} from './directive/has-role.directive';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BooksListComponent } from './books-list/books-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
     BookrequestsDetailComponent,
     BookrequestsCreateComponent,
     HasRoleDirective,
-    BookDetailComponent
+    BookDetailComponent,
+    BooksListComponent
   ],
   imports: [
     BrowserModule,
