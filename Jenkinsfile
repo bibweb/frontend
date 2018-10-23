@@ -6,7 +6,7 @@ pipeline {
 	      docker 'circleci/node:stretch-browsers'
 	    }
 	    steps {
-	      sh 'yarnd'
+	      sh 'yarn'
 	      stash includes: 'node_modules/', name: 'node_modules'
 	    }
     }
