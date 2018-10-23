@@ -10,15 +10,6 @@ pipeline {
 	      stash includes: 'node_modules/', name: 'node_modules'
 	    }
     }
-    stage('Lint', false) {
-      agent {
-        docker 'circleci/node:stretch-browsers'
-      }
-      steps {
-        unstash 'node_modules'
-        sh 'yarn lint'
-      }
-    }
     stage('Unit Test') {
       agent {
         docker 'circleci/node:stretch-browsers'
