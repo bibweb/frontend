@@ -4,17 +4,4 @@
 
 <br />
 
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th scope="col">#</th>
-			<th scope="col">Title</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let book of books" routerLink="/books/{{book.id}}">
-			<td>{{book.id}}</td>
-			<td>{{book.title}}</td>
-		</tr>
-	</tbody>
-</table>
+<app-books-list [books]="books" (book)="selectBook($event)"></app-books-list>
