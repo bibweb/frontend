@@ -13,6 +13,7 @@ export class BookrequestsComponent implements OnInit {
 
   constructor(private bookRequestService: BookrequestService) {
     this.bookRequestStateStrings = BookRequestStateStrings;
+    this.bookRequests = [];
   }
 
   ngOnInit() {
