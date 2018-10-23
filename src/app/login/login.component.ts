@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
-      this.router.navigateByUrl("/books");
+      this.router.navigateByUrl('/books');
     }
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'books';
@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.model)
         .subscribe(
           (retVal) => {
-            if(retVal) {
-              this.authService.setSession(retVal["token"], retVal["expiresIn"]);
+            if (retVal) {
+              this.authService.setSession(retVal['token'], retVal['expiresIn']);
               this.router.navigateByUrl(this.returnUrl);
             } else {
               this.failedLoginAttempts = this.authService.getFailedLoginAttempts();

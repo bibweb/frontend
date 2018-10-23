@@ -7,33 +7,34 @@ import {Book} from '../model/book';
 import {BookService} from '../service/book.service';
 
 @Component({
-	selector: 'app-book-detail',
-	templateUrl: './book-detail.component.html',
-	styleUrls: ['./book-detail.component.css']
+  selector: 'app-book-detail',
+  templateUrl: './book-detail.component.html',
+  styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
-	@Input() book: Book;
+  @Input() book: Book;
 
-	constructor(private route: ActivatedRoute,
-		private bookService: BookService,
-		private location: Location,
-		private router: Router
-	) {}
+  constructor(private route: ActivatedRoute,
+              private bookService: BookService,
+              private location: Location,
+              private router: Router
+  ) {
+  }
 
-	ngOnInit() {
-		this.getBook();
-	}
-	
-	getBook(): void {
-		const id = +this.route.snapshot.paramMap.get('id');
-		this.bookService.getBook(id).subscribe(book => this.book = book);
-	}
+  ngOnInit() {
+    this.getBook();
+  }
 
-	goBack(): void {
-		this.location.back();
-	}
+  getBook(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.bookService.getBook(id).subscribe(book => this.book = book);
+  }
 
-	goToUpdateBook(): void {
-		this.router.navigateByUrl("/books/" + this.book.id + "/update");
-	}
+  goBack(): void {
+    this.location.back();
+  }
+
+  goToUpdateBook(): void {
+    this.router.navigateByUrl('/books/' + this.book.id + '/update');
+  }
 }

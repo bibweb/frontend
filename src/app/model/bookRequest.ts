@@ -1,10 +1,3 @@
-export class BookRequest {
-  id: number;
-  isbn: string;
-  user: string;
-  state: BookRequestState = BookRequestState.NEW;
-}
-
 export enum BookRequestState {
   NEW = 0,
   ACCEPTED = 1,
@@ -16,3 +9,11 @@ export const BookRequestStateStrings = new Map<number, string>([
   [BookRequestState.ACCEPTED, 'Accepted'],
   [BookRequestState.DECLINED, 'Declined']
 ]);
+
+
+export class BookRequest {
+  id: number;
+  isbn: string;
+  user: string;
+  state: BookRequestState = BookRequestState.NEW;
+}
