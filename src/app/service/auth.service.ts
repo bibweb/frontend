@@ -17,15 +17,31 @@ const httpOptions = {
 export class AuthService {
 
   private authUrl = environment.bibwebApiUrl + '/token/generate-token';  // URL to web api
+  private failedLoginAttempts: number;
+  private serverTemporarilyUnavailable: boolean;
 
   constructor(private http: HttpClient) {
+    this.failedLoginAttempts = 0;
+    this.serverTemporarilyUnavailable = false;
   }
 
   login(loginUser: LoginUser): Observable<void> {
     return this.http.post(this.authUrl, loginUser, httpOptions).pipe(
-      tap(res => console.log(`logged in user ${loginUser.username}`)),
+      tap(res => {
+        console.log(`logged in user ${loginUser.username}`);
+        this.failedLoginAttempts = 0;
+        this.serverTemporarilyUnavailable = false;
+      }),
       catchError(this.handleError<any>('login'))
     );
+  }
+
+  public getFailedLoginAttempts(): number {
+    return this.failedLoginAttempts;
+  }
+
+  public isServerTemporarilyUnavailable(): boolean {
+    return this.serverTemporarilyUnavailable;
   }
 
   public setSession(token: string, expiresIn: number) {
@@ -72,7 +88,12 @@ export class AuthService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
+      if(error.status === 401) {
+        this.failedLoginAttempts = this.failedLoginAttempts + 1;
+        this.serverTemporarilyUnavailable = false;
+      } else {
+        this.serverTemporarilyUnavailable = true;
+      }
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
