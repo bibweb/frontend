@@ -2,4 +2,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 body {
   overflow-y:scroll;
+  padding-top:60px;
 }
