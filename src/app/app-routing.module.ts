@@ -12,9 +12,11 @@ import {BookrequestsDetailComponent} from './bookrequests-detail/bookrequests-de
 import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-create.component';
 
 import {UserRoles} from './model/userRoles';
+import {ForbiddenPageAccessComponent} from "@app/forbidden-page-access/forbidden-page-access.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'forbidden', component: ForbiddenPageAccessComponent},
 
   // User routes
   {
