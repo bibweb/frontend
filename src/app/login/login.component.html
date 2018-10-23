@@ -1,24 +1,31 @@
 <form>
-    <fieldset>
-        <legend>Login</legend>
-        <div class="form-field">
-            <label>Username</label>
-            <input type="text" class="form-control" id="username"
-               required
-               [(ngModel)]="model.username" name="username"
-               #name="ngModel">
-        </div>
-        <div class="form-field">
-            <label>Password:</label>
-            <input type="password" class="form-control" id="password"
-               required
-               [(ngModel)]="model.password" name="password"
-               #name="ngModel">
-        </div>
-    </fieldset>
-	<br />
-    <div class="form-buttons">
-        <button class="btn btn-primary" 
-                (click)="login()">Login</button>
+  <fieldset>
+    <legend>Login</legend>
+    <div class="form-field">
+      <label>Username</label>
+      <input type="text" class="form-control" id="username"
+             required
+             [(ngModel)]="model.username" name="username"
+             #name="ngModel">
     </div>
+    <div class="form-field">
+      <label>Password:</label>
+      <input type="password" class="form-control" id="password"
+             required
+             [(ngModel)]="model.password" name="password"
+             #name="ngModel">
+    </div>
+  </fieldset>
+  <br/>
+  <div class="alert alert-danger" *ngIf="this.failedLoginAttempts > 0">
+    Either your username or password is incorrect. Please try again.
+  </div>
+  <div class="alert alert-danger" *ngIf="this.serverTemporarilyUnavailable">
+    Could not connect to the server. Please check, if the server certificate is accepted and the server is running.
+  </div>
+  <div class="form-buttons">
+    <button class="btn btn-primary"
+            (click)="login()">Login
+    </button>
+  </div>
 </form>
