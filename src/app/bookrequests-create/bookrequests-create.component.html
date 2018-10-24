@@ -4,7 +4,7 @@
   <form [formGroup]="createForm" (ngSubmit)="createBookRequest()">
     <div class="form-group row">
       <label class="col-form-label col-sm-2">ISBN:</label>
-      <input class="col-sm-5" type="text" formControlName="isbn"/>
+      <input class="col-sm-5 form-control" type="text" formControlName="isbn"/>
     </div>
     <input type="hidden" formControlName="user" readonly/>
     <input type="hidden" formControlName="state" readonly/>
