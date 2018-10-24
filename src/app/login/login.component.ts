@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import {Router, ActivatedRoute} from '@angular/router';
-
-import {LoginUser} from '../model/loginUser';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +9,19 @@ import {AuthService} from '../service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loginForm: FormGroup;
   returnUrl: string;
-  model = new LoginUser('', '');
   failedLoginAttempts: number;
   serverTemporarilyUnavailable: boolean;
 
-  constructor(private location: Location,
+  constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
               private route: ActivatedRoute) {
+    this.loginForm = this.fb.group({
+      'username': ['', Validators.required],
+      'password': ['', Validators.required]
+    });
   }
 
   ngOnInit() {
@@ -28,24 +29,22 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/books');
     }
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'books';
+    this.returnUrl = this.route.queryParams['returnUrl'] || '/books';
   }
 
-  login(): void {
-    if (this.model.username && this.model.password) {
-      this.authService.login(this.model)
-        .subscribe(
-          (retVal) => {
-            if (retVal) {
-              this.authService.setSession(retVal['token'], retVal['expiresIn']);
-              this.router.navigateByUrl(this.returnUrl);
-            } else {
-              this.failedLoginAttempts = this.authService.getFailedLoginAttempts();
-              this.serverTemporarilyUnavailable = this.authService.isServerTemporarilyUnavailable();
-            }
+  login() {
+    this.authService.login(this.loginForm.value)
+      .subscribe(
+        (data) => {
+          if (data) {
+            this.authService.setSession(data['token'], data['expiresIn']);
+            this.router.navigateByUrl(this.returnUrl);
+          } else {
+            this.failedLoginAttempts = this.authService.getFailedLoginAttempts();
+            this.serverTemporarilyUnavailable = this.authService.isServerTemporarilyUnavailable();
           }
-        );
-    }
+        }
+      );
   }
 
 }
