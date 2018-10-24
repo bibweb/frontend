@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, of} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import * as moment from 'moment';
 
 import {LoginUser} from '../model/loginUser';
@@ -25,9 +25,9 @@ export class AuthService {
     this.serverTemporarilyUnavailable = false;
   }
 
-  login(loginUser: LoginUser): Observable<void> {
+  login(loginUser: LoginUser) {
     return this.http.post(this.authUrl, loginUser, httpOptions).pipe(
-      tap(res => {
+      tap(() => {
         console.log(`logged in user ${loginUser.username}`);
         this.failedLoginAttempts = 0;
         this.serverTemporarilyUnavailable = false;
@@ -72,9 +72,7 @@ export class AuthService {
     const decodedJwtJsonData = window.atob(jwtData);
     const decodedJwtData = JSON.parse(decodedJwtJsonData);
 
-    const retVal = decodedJwtData.scopes.toString().includes(role.toString());
-
-    return retVal;
+    return decodedJwtData.scopes.toString().includes(role.toString());
   }
 
   public getUserName(): string {
