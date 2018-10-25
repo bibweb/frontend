@@ -2,4 +2,6 @@
 
 <br />
 
-<app-books-searchable-list [books]="books" (book)="selectBook($event)"></app-books-searchable-list>
+<div *ngIf="books">
+  <app-books-searchable-list [books]="books | bookListAvailabilityFilter" (book)="selectBook($event)"></app-books-searchable-list>
+</div>

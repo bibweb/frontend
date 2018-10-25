@@ -8,11 +8,14 @@
   </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let book of books" (click)="selectBook(book)">
-      <td>{{book.id}}</td>
-      <td>{{book.title}}</td>
-      <td>{{book.releaseYear}}</td>
-      <td>{{book.numberOfPages}}</td>
-    </tr>
+  <tr *ngFor="let book of books" (click)="selectBook(book)">
+    <td [ngClass]="{'table-warning': book.availability === bookAvailabilityState.UNAVAILABLE,
+                    'table-primary': book.availability === bookAvailabilityState.RESERVED_BY_YOU}">
+      {{book.id}}
+    </td>
+    <td>{{book.title}}</td>
+    <td>{{book.releaseYear}}</td>
+    <td>{{book.numberOfPages}}</td>
+  </tr>
   </tbody>
 </table>

@@ -1,16 +1,16 @@
 import {Book} from '@app/model/book';
-import {BookListFilterPipe} from '@app/books-searchable-list/book-list-filter.pipe';
+import {BookListSearchPipe} from '@app/books-searchable-list/book-list-search.pipe';
 
 describe('books-list-filter', () => {
 
-  let pipe: BookListFilterPipe;
+  let pipe: BookListSearchPipe;
   let books: Book[];
   let book1: Book;
   let book2: Book;
   let book3: Book;
 
   beforeEach(function () {
-    pipe = new BookListFilterPipe();
+    pipe = new BookListSearchPipe();
 
     book1 = new Book();
     book2 = new Book();

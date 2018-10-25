@@ -2,10 +2,10 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {Book} from '@app/model/book';
 
 @Pipe({
-  name: 'bookListFilter'
+  name: 'bookListSearchFilter'
 })
 
-export class BookListFilterPipe implements PipeTransform {
+export class BookListSearchPipe implements PipeTransform {
   transform(items: Book[], searchText: string): any[] {
     if (!items) {
       return [];

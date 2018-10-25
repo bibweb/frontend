@@ -20,7 +20,8 @@ import {HasRoleDirective} from './directive/has-role.directive';
 import {BookDetailComponent} from './book-detail/book-detail.component';
 import {BooksListComponent} from './books-list/books-list.component';
 import {BooksSearchableListComponent} from './books-searchable-list/books-searchable-list.component';
-import {BookListFilterPipe} from './books-searchable-list/book-list-filter.pipe';
+import {BookListSearchPipe} from './books-searchable-list/book-list-search.pipe';
+import {BookListAvailabilityPipe} from './books/book-list-availability.pipe';
 import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-page-access.component';
 
 @NgModule({
@@ -37,7 +38,8 @@ import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-pa
     BookDetailComponent,
     BooksListComponent,
     BooksSearchableListComponent,
-    BookListFilterPipe,
+    BookListSearchPipe,
+    BookListAvailabilityPipe,
     ForbiddenPageAccessComponent
   ],
   imports: [
