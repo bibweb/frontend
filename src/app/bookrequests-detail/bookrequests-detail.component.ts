@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookRequest, BookRequestState, BookRequestStateStrings} from '../model/bookRequest';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookrequestService} from '../service/bookrequest.service';
@@ -44,10 +44,10 @@ export class BookrequestsDetailComponent implements OnInit {
   }
 
   acceptBookRequest(): void {
-    this.bookRequestService.acceptBookRequest(this.bookRequest).subscribe(_ => this.router.navigate(['/bookrequests']));
+    this.bookRequestService.acceptBookRequest(this.bookRequest).subscribe(() => this.router.navigate(['/bookrequests']));
   }
 
   declineBookRequest() {
-    this.bookRequestService.declineBookRequest(this.bookRequest).subscribe(_ => this.router.navigate(['/bookrequests']));
+    this.bookRequestService.declineBookRequest(this.bookRequest).subscribe(() => this.router.navigate(['/bookrequests']));
   }
 }
