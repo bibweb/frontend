@@ -1,19 +1,13 @@
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
   <fieldset>
     <legend>Login</legend>
     <div class="form-field">
-      <label>Username</label>
-      <input type="text" class="form-control" id="username"
-             required
-             [(ngModel)]="model.username" name="username"
-             #name="ngModel">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" formControlName="username" id="username" autocomplete="username">
     </div>
     <div class="form-field">
-      <label>Password:</label>
-      <input type="password" class="form-control" id="password"
-             required
-             [(ngModel)]="model.password" name="password"
-             #name="ngModel">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" formControlName="password" id="password" autocomplete="password">
     </div>
   </fieldset>
   <br/>
@@ -24,8 +18,6 @@
     Could not connect to the server. Please check, if the server certificate is accepted and the server is running.
   </div>
   <div class="form-buttons">
-    <button class="btn btn-primary"
-            (click)="login()">Login
-    </button>
+    <button class="btn btn-primary col-sm-2" type="submit" [disabled]="!loginForm.valid">Login</button>
   </div>
 </form>

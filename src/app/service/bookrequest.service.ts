@@ -28,13 +28,11 @@ export class BookrequestService {
   }
 
   acceptBookRequest(bookRequest: BookRequest) {
-    bookRequest.state = BookRequestState.ACCEPTED;
-    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id, bookRequest);
+    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id + '/accept', bookRequest);
   }
 
   declineBookRequest(bookRequest: BookRequest) {
-    bookRequest.state = BookRequestState.DECLINED;
-    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id, bookRequest);
+    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id + '/decline', bookRequest);
   }
 }
 
