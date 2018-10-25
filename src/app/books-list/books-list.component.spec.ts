@@ -2,6 +2,9 @@ import {BooksListComponent} from '@app/books-list/books-list.component';
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {Component, ViewChild} from '@angular/core';
 import {Book} from '@app/model/book';
+import {RouterTestingModule} from '@angular/router/testing';
+import {BookrequestService} from '@app/service/bookrequest.service';
+import {BookService} from '@app/service/book.service';
 
 describe('books-list', () => {
   @Component({
@@ -19,10 +22,18 @@ describe('books-list', () => {
 
   let testHostComponent: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
+  let service;
 
   beforeEach(async () => {
+    service = jasmine.createSpyObj('BookService', ['reserveBook', 'removeReservation']);
     TestBed.configureTestingModule({
-      declarations: [BooksListComponent, TestHostComponent]
+      imports: [
+        RouterTestingModule
+      ],
+      providers: [
+        {provide: BookService, useValue: service}
+      ],
+      declarations: [BooksListComponent, TestHostComponent],
     }).compileComponents();
   });
 
@@ -55,24 +66,4 @@ describe('books-list', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelectorAll('tbody > tr').length).toBe(2);
   });
-
-  it('should register click on book', fakeAsync(() => {
-    spyOn(testHostComponent, 'selectBook');
-
-    const book1: Book = new Book();
-    book1.id = 1;
-    book1.title = 'Book 1';
-
-    testHostComponent.booksListComponent.books = [book1];
-
-    fixture.detectChanges();
-
-    const row = fixture.nativeElement.querySelector('tbody > tr');
-    row.click();
-
-    fixture.whenStable().then(() => {
-      expect(testHostComponent.selectBook).toHaveBeenCalled();
-    });
-
-  }));
 });

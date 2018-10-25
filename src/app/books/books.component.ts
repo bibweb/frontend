@@ -28,7 +28,7 @@ export class BooksComponent implements OnInit {
   }
 
   selectBook(book: Book) {
-    this.router.navigateByUrl('/books/' + book.id);
+
   }
 
 }

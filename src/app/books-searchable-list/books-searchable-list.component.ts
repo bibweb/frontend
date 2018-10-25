@@ -13,11 +13,4 @@ export class BooksSearchableListComponent {
   @Input()
   books: Book[];
 
-  @Output()
-  book = new EventEmitter<Book>();
-
-  selectBook(book: Book) {
-    this.book.emit(book);
-  }
-
 }
