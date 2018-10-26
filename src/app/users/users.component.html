@@ -1,0 +1,25 @@
+<h2>Registered Users</h2>
+<br/>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Username</th>
+    <th>Roles</th>
+    <th>Enabled</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.username}}</td>
+    <td>
+      <ul class="list-inline">
+        <li class="list-inline-item" *ngFor="let role of user.roles">{{role.rolename}}</li>
+      </ul>
+    </td>
+    <td>{{user.enabled}}</td>
+  </tr>
+  </tbody>
+</table>

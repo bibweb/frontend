@@ -5,6 +5,9 @@
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active" routerLink="/books">Books</a></li>
         <li class="nav-item"><a class="nav-item nav-link" routerLinkActive="active" routerLink="/bookrequests">Book Requests</a></li>
+        <li class="nav-item" *appHasRole="'ADMIN'">
+          <a class="nav-item nav-link" routerLinkActive="active" routerLink="/users">Users</a>
+        </li>
       </ul>
     </div>
 
