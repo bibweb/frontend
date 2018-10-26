@@ -66,4 +66,5 @@ describe('books-list', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelectorAll('tbody > tr').length).toBe(2);
   });
+
 });
