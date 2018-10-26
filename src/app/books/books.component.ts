@@ -14,9 +14,10 @@ import {BookAvailabilityState} from '@app/model/bookAvailabilityState';
 
 export class BooksComponent implements OnInit {
 
-  private books: Book[];
+  books: Book[];
   private filters: BookAvailabilityState[];
-  private bookAvailabilityState = BookAvailabilityState; // used in template
+
+  bookAvailabilityState = BookAvailabilityState; // used in template
 
   constructor(private bookService: BookService,
               private router: Router) {

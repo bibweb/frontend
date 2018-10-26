@@ -4,18 +4,18 @@
 
 <div>
   <button class="btn"
-          [ngClass]="{'btn-secondary': filters.includes(bookAvailabilityState.AVAILABLE),
-                    'btn-outline-secondary': !filters.includes(bookAvailabilityState.AVAILABLE)}"
+          [ngClass]="{'btn-secondary': getFilters().includes(bookAvailabilityState.AVAILABLE),
+                    'btn-outline-secondary': !getFilters().includes(bookAvailabilityState.AVAILABLE)}"
           (click)="toggleShowAvailableBooks()">Show available books
   </button>&nbsp;
   <button class="btn"
-          [ngClass]="{'btn-primary': filters.includes(bookAvailabilityState.RESERVED_BY_YOU),
-                    'btn-outline-primary': !filters.includes(bookAvailabilityState.RESERVED_BY_YOU)}"
+          [ngClass]="{'btn-primary': getFilters().includes(bookAvailabilityState.RESERVED_BY_YOU),
+                    'btn-outline-primary': !getFilters().includes(bookAvailabilityState.RESERVED_BY_YOU)}"
           (click)="toggleShowReservedBooks()">Show your reserved books
   </button>&nbsp;
   <button class="btn"
-          [ngClass]="{'btn-warning': filters.includes(bookAvailabilityState.UNAVAILABLE),
-                    'btn-outline-warning': !filters.includes(bookAvailabilityState.UNAVAILABLE)}"
+          [ngClass]="{'btn-warning': getFilters().includes(bookAvailabilityState.UNAVAILABLE),
+                    'btn-outline-warning': !getFilters().includes(bookAvailabilityState.UNAVAILABLE)}"
           (click)="toggleShowUnavailableBooks()">Show unavailable books
   </button>
   |
@@ -25,5 +25,5 @@
 <br/>
 
 <div *ngIf="books">
-  <app-books-searchable-list [books]="books | bookListAvailabilityFilter : filters"></app-books-searchable-list>
+  <app-books-searchable-list [books]="books | bookListAvailabilityFilter : getFilters()"></app-books-searchable-list>
 </div>

@@ -16,7 +16,7 @@ export class BookActionsComponent {
   @Output()
   update = new EventEmitter<Book>();
 
-  private bookAvailabilityState = BookAvailabilityState; // used in template
+  bookAvailabilityState = BookAvailabilityState; // used in template
 
   constructor(private bookService: BookService) {
   }
