@@ -1,10 +1,10 @@
 import {BooksListComponent} from '@app/books-list/books-list.component';
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
-import {Component, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Book} from '@app/model/book';
 import {RouterTestingModule} from '@angular/router/testing';
-import {BookrequestService} from '@app/service/bookrequest.service';
 import {BookService} from '@app/service/book.service';
+import {BookActionsComponent} from '@app/book-actions/book-actions.component';
 
 describe('books-list', () => {
   @Component({
@@ -20,12 +20,22 @@ describe('books-list', () => {
     }
   }
 
+  @Component({
+    selector: `app-book-actions`,
+    template: ``
+  })
+  class MockBookActionComponent {
+    @Input()
+    private book: Book;
+  }
+
   let testHostComponent: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
   let service;
 
   beforeEach(async () => {
     service = jasmine.createSpyObj('BookService', ['reserveBook', 'removeReservation']);
+
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -33,7 +43,7 @@ describe('books-list', () => {
       providers: [
         {provide: BookService, useValue: service}
       ],
-      declarations: [BooksListComponent, TestHostComponent],
+      declarations: [BooksListComponent, TestHostComponent, MockBookActionComponent],
     }).compileComponents();
   });
 
