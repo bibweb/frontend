@@ -6,9 +6,9 @@ import {BookAvailabilityState} from '@app/model/bookAvailabilityState';
   name: 'bookListAvailabilityFilter'
 })
 export class BookListAvailabilityPipe implements PipeTransform {
-  transform(items: Book[], state: BookAvailabilityState): any[] {
+  transform(items: Book[], states: BookAvailabilityState[]): any[] {
     return items.filter(book => {
-      return book.availability !== state;
+      return states.includes(book.availability);
     });
   }
 }

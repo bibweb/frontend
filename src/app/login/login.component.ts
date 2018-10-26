@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: string;
   failedLoginAttempts: number;
-  serverTemporarilyUnavailable: boolean;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
@@ -41,7 +40,6 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl(this.returnUrl);
           } else {
             this.failedLoginAttempts = this.authService.getFailedLoginAttempts();
-            this.serverTemporarilyUnavailable = this.authService.isServerTemporarilyUnavailable();
           }
         }
       );

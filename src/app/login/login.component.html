@@ -14,9 +14,6 @@
   <div class="alert alert-danger" *ngIf="this.failedLoginAttempts > 0">
     Either your username or password is incorrect. Please try again.
   </div>
-  <div class="alert alert-danger" *ngIf="this.serverTemporarilyUnavailable">
-    Could not connect to the server. Please check, if the server certificate is accepted and the server is running.
-  </div>
   <div class="form-buttons">
     <button class="btn btn-primary col-sm-2" type="submit" [disabled]="!loginForm.valid">Login</button>
   </div>

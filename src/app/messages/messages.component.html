@@ -1,5 +1,6 @@
 <div *ngIf="messageService.getLastError()" class="alert alert-danger">
-  An error occurred, when trying to reach the remote server ({{messageService.getLastError()}}).
-  Contact the administrator if the error is unexpected and persists. <br />
+  <p>An error occurred, when trying to reach the remote server (Error Code: {{messageService.getLastError()}}).
+    Contact the administrator, if the error is unexpected and persists.</p>
+
   Try <a href="javascript:;" (click)="reloadPage()">reloading the page</a>.
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MessageService} from '@app/service/message.service';
 import {Router} from '@angular/router';
 
@@ -9,9 +9,10 @@ import {Router} from '@angular/router';
 })
 export class MessagesComponent {
 
-  constructor(public messageService: MessageService) { }
+  constructor(public messageService: MessageService) {
+  }
 
-  reloadPage() : void {
+  reloadPage(): void {
     window.location.reload();
   }
 
