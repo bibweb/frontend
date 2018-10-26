@@ -3,9 +3,9 @@
   <tr>
     <th style="width: 10%">#</th>
     <th style="width: 40%">Title</th>
-    <th style="width: 22%">Release Year</th>
-    <th style="width: 22%">Number of pages</th>
-    <th style="width: 6%"></th>
+    <th style="width: 23%">Release Year</th>
+    <th style="width: 23%">Number of pages</th>
+    <th style="width: 4%"></th>
   </tr>
   </thead>
   <tbody>
@@ -18,8 +18,8 @@
     <td>{{book.releaseYear}}</td>
     <td>{{book.numberOfPages}}</td>
     <td>
-      <button *ngIf="book.availability === bookAvailabilityState.AVAILABLE" (click)="$event.stopPropagation();reserveBook(book)" class="btn btn-outline-primary">+</button>
-      <button *ngIf="book.availability === bookAvailabilityState.RESERVED_BY_YOU" (click)="$event.stopPropagation();removeReservation(book)" class="btn btn-outline-warning">-</button>
+      <button *ngIf="book.availability === bookAvailabilityState.AVAILABLE" (click)="$event.stopPropagation();reserveBook(book)" class="btn btn-block btn-outline-primary">+</button>
+      <button *ngIf="book.availability === bookAvailabilityState.RESERVED_BY_YOU" (click)="$event.stopPropagation();removeReservation(book)" class="btn btn-block btn-outline-warning">-</button>
     </td>
   </tr>
   </tbody>
