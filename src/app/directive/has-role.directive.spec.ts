@@ -4,6 +4,12 @@ import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {AuthService} from '@app/service/auth.service';
 
+@Component({
+  template: `<div *appHasRole="'ADMIN'"></div>`
+})
+class TestHasRoleComponent {
+}
+
 describe('HasRoleDirective', () => {
   let fixture: ComponentFixture<TestHasRoleComponent>;
   let component: TestHasRoleComponent;
@@ -43,9 +49,3 @@ describe('HasRoleDirective', () => {
     expect(divEl).toBeNull();
   });
 });
-
-@Component({
-  template: `<div *appHasRole="'ADMIN'"></div>`
-})
-class TestHasRoleComponent {
-}

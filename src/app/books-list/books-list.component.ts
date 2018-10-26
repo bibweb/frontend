@@ -24,24 +24,8 @@ export class BooksListComponent {
     this.router.navigateByUrl('/books/' + book.id);
   }
 
-  reserveBook(book: Book) {
-    this.bookService.reserveBook(book).subscribe(() => {
-      this.bookService.getBook(book.id).subscribe(book => {
-        this.books.find(x => x.id == book.id).availability = book.availability;
-      });
-    }, error => {
-      console.error(error);
-    });
-  }
-
-  removeReservation(book: Book) {
-    this.bookService.removeReservation(book).subscribe(() => {
-      this.bookService.getBook(book.id).subscribe(book => {
-        this.books.find(x => x.id == book.id).availability = book.availability;
-      });
-    }, error => {
-      console.error(error);
-    });
+  updateBook(book: Book) {
+      this.books[this.books.findIndex(x => x.id === book.id)] = book;
   }
 
 }

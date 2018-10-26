@@ -13,7 +13,6 @@ describe('BooksComponent', () => {
 
   let service;
   let router;
-  let pipe;
 
   beforeEach(async(() => {
     service = jasmine.createSpyObj('BookService', ['getBooks']);
@@ -63,11 +62,11 @@ describe('BooksComponent', () => {
 
     filters = [BookAvailabilityState.RESERVED_BY_YOU, BookAvailabilityState.UNAVAILABLE];
     component.setFilters(filters);
-    expect(component.getFilters()).toBe(filters)
+    expect(component.getFilters()).toBe(filters);
   });
 
   it('should toggle a filter correctly, if filter is activated', () => {
-    let filters = [];
+    const filters = [];
     component.setFilters(filters);
     expect(component.getFilters().includes(BookAvailabilityState.RESERVED_BY_YOU)).toBe(false);
     component.toggleShowReservedBooks();
@@ -77,7 +76,7 @@ describe('BooksComponent', () => {
   });
 
   it('should be able to toggle all filters correctly', () => {
-    let filters = [];
+    const filters = [];
     component.setFilters(filters);
     expect(component.getFilters().length).toBe(0);
     component.toggleAll();

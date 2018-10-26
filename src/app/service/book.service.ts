@@ -37,6 +37,6 @@ export class BookService {
   }
 
   removeReservation(book: Book): Observable<any> {
-    return this.http.delete(this.booksUrl + '/' + book.id + '/reservations', httpOptions)
+    return this.http.delete(this.booksUrl + '/' + book.id + '/reservations', httpOptions);
   }
 }

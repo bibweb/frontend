@@ -1,6 +1,10 @@
 <div *ngIf="book">
   <h2>Details of '{{book.title}}'</h2>
 
+  <div style="width: 6%">
+    <app-book-actions [book]="book"></app-book-actions>
+  </div>
+
   <br/>
 
   <div class="card">

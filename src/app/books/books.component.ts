@@ -54,10 +54,10 @@ export class BooksComponent implements OnInit {
   }
 
   toggleAll() {
-    if(this.filters.includes(BookAvailabilityState.AVAILABLE) &&
+    if (this.filters.includes(BookAvailabilityState.AVAILABLE) &&
       this.filters.includes(BookAvailabilityState.RESERVED_BY_YOU) &&
       this.filters.includes(BookAvailabilityState.UNAVAILABLE)) {
-      this.filters = []
+      this.filters = [];
     } else {
       this.filters = [BookAvailabilityState.RESERVED_BY_YOU, BookAvailabilityState.AVAILABLE, BookAvailabilityState.UNAVAILABLE];
     }
