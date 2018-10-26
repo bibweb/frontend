@@ -1,2 +1,2 @@
-<button *ngIf="book.availability === bookAvailabilityState.AVAILABLE" (click)="$event.stopPropagation();reserveBook(book)" class="btn btn-block btn-outline-primary">+</button>
-<button *ngIf="book.availability === bookAvailabilityState.RESERVED_BY_YOU" (click)="$event.stopPropagation();removeReservation(book)" class="btn btn-block btn-outline-warning">-</button>
+<button *ngIf="book.availability === bookAvailabilityState.AVAILABLE" (click)="$event.stopPropagation();reserveBook(book)" class="btn btn-block btn-outline-primary" tooltip="Reserve this book">+</button>
+<button *ngIf="book.availability === bookAvailabilityState.RESERVED_BY_YOU" (click)="$event.stopPropagation();removeReservation(book)" class="btn btn-block btn-outline-warning" tooltip="Remove reservation for this book">-</button>

@@ -26,6 +26,7 @@ import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-pa
 import {MessagesComponent} from './messages/messages.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {BookActionsComponent} from './book-actions/book-actions.component';
+import {TooltipModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {BookActionsComponent} from './book-actions/book-actions.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
