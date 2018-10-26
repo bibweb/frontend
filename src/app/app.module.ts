@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
-import {AuthInterceptor} from './auth-interceptor';
+import {CustomHttpInterceptor} from './custom-http-interceptor.service';
 
 import {AppComponent} from './app.component';
 import {BooksComponent} from './books/books.component';
@@ -23,6 +23,7 @@ import {BooksSearchableListComponent} from './books-searchable-list/books-search
 import {BookListSearchPipe} from './books-searchable-list/book-list-search.pipe';
 import {BookListAvailabilityPipe} from './books/book-list-availability.pipe';
 import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-page-access.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-pa
     BooksSearchableListComponent,
     BookListSearchPipe,
     BookListAvailabilityPipe,
-    ForbiddenPageAccessComponent
+    ForbiddenPageAccessComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-pa
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
+    useClass: CustomHttpInterceptor,
     multi: true
   },
     AuthGuard,
