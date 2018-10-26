@@ -13,6 +13,7 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
 
 import {UserRoles} from './model/userRoles';
 import {ForbiddenPageAccessComponent} from '@app/forbidden-page-access/forbidden-page-access.component';
+import {SignUpComponent} from '@app/sign-up/sign-up.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -38,6 +39,7 @@ const routes: Routes = [
 
 
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignUpComponent}
 ];
 
 @NgModule({

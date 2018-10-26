@@ -24,6 +24,8 @@ import {BookListSearchPipe} from './books-searchable-list/book-list-search.pipe'
 import {BookListAvailabilityPipe} from './books/book-list-availability.pipe';
 import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-page-access.component';
 import {MessagesComponent} from './messages/messages.component';
+import {SignUpComponent} from './sign-up/sign-up.component';
+>>>>>>> 881d05cad1f527373884b92ca30fd9501f0d21b6
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import {MessagesComponent} from './messages/messages.component';
     BookListSearchPipe,
     BookListAvailabilityPipe,
     ForbiddenPageAccessComponent,
-    MessagesComponent
+    MessagesComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
