@@ -25,7 +25,7 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
     this.getBooks();
-    this.filters = [BookAvailabilityState.AVAILABLE, BookAvailabilityState.RESERVED_BY_YOU];
+    this.filters = [BookAvailabilityState.AVAILABLE, BookAvailabilityState.CHECKEDOUT_BY_YOU];
   }
 
   getBooks(): void {
@@ -47,7 +47,7 @@ export class BooksComponent implements OnInit {
   }
 
   toggleShowReservedBooks() {
-    this.toggleAvailabilityState(BookAvailabilityState.RESERVED_BY_YOU);
+    this.toggleAvailabilityState(BookAvailabilityState.CHECKEDOUT_BY_YOU);
   }
 
   toggleShowUnavailableBooks() {
@@ -56,11 +56,11 @@ export class BooksComponent implements OnInit {
 
   toggleAll() {
     if (this.filters.includes(BookAvailabilityState.AVAILABLE) &&
-      this.filters.includes(BookAvailabilityState.RESERVED_BY_YOU) &&
+      this.filters.includes(BookAvailabilityState.CHECKEDOUT_BY_YOU) &&
       this.filters.includes(BookAvailabilityState.UNAVAILABLE)) {
       this.filters = [];
     } else {
-      this.filters = [BookAvailabilityState.RESERVED_BY_YOU, BookAvailabilityState.AVAILABLE, BookAvailabilityState.UNAVAILABLE];
+      this.filters = [BookAvailabilityState.CHECKEDOUT_BY_YOU, BookAvailabilityState.AVAILABLE, BookAvailabilityState.UNAVAILABLE];
     }
   }
 

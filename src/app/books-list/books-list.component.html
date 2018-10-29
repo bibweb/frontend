@@ -11,7 +11,7 @@
   <tbody>
   <tr *ngFor="let book of books" (click)="selectBook(book)">
     <td [ngClass]="{'table-warning': book.availability === bookAvailabilityState.UNAVAILABLE,
-                    'table-primary': book.availability === bookAvailabilityState.RESERVED_BY_YOU}">
+                    'table-primary': book.availability === bookAvailabilityState.CHECKEDOUT_BY_YOU}">
       {{book.id}}
     </td>
     <td>{{book.title}}</td>

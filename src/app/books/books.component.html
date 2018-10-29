@@ -9,9 +9,9 @@
           (click)="toggleShowAvailableBooks()">Show available books
   </button>&nbsp;
   <button class="btn"
-          [ngClass]="{'btn-primary': getFilters().includes(bookAvailabilityState.RESERVED_BY_YOU),
-                    'btn-outline-primary': !getFilters().includes(bookAvailabilityState.RESERVED_BY_YOU)}"
-          (click)="toggleShowReservedBooks()">Show your reserved books
+          [ngClass]="{'btn-primary': getFilters().includes(bookAvailabilityState.CHECKEDOUT_BY_YOU),
+                    'btn-outline-primary': !getFilters().includes(bookAvailabilityState.CHECKEDOUT_BY_YOU)}"
+          (click)="toggleShowReservedBooks()">Show your checked out books
   </button>&nbsp;
   <button class="btn"
           [ngClass]="{'btn-warning': getFilters().includes(bookAvailabilityState.UNAVAILABLE),

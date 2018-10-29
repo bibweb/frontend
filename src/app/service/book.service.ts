@@ -32,11 +32,11 @@ export class BookService {
     return this.http.put(this.booksUrl + '/' + book.id, book, httpOptions);
   }
 
-  reserveBook(book: Book): Observable<any> {
-    return this.http.put(this.booksUrl + '/' + book.id + '/reservations', httpOptions);
+  checkoutBook(book: Book): Observable<any> {
+    return this.http.put(this.booksUrl + '/' + book.id + '/checkouts', httpOptions);
   }
 
-  removeReservation(book: Book): Observable<any> {
-    return this.http.delete(this.booksUrl + '/' + book.id + '/reservations', httpOptions);
+  returnBook(book: Book): Observable<any> {
+    return this.http.delete(this.booksUrl + '/' + book.id + '/checkouts', httpOptions);
   }
 }

@@ -56,11 +56,11 @@ describe('BooksComponent', () => {
   });
 
   it('should set filters correctly', () => {
-    let filters = [BookAvailabilityState.RESERVED_BY_YOU];
+    let filters = [BookAvailabilityState.CHECKEDOUT_BY_YOU];
     component.setFilters(filters);
     expect(component.getFilters()).toBe(filters);
 
-    filters = [BookAvailabilityState.RESERVED_BY_YOU, BookAvailabilityState.UNAVAILABLE];
+    filters = [BookAvailabilityState.CHECKEDOUT_BY_YOU, BookAvailabilityState.UNAVAILABLE];
     component.setFilters(filters);
     expect(component.getFilters()).toBe(filters);
   });
@@ -68,11 +68,11 @@ describe('BooksComponent', () => {
   it('should toggle a filter correctly, if filter is activated', () => {
     const filters = [];
     component.setFilters(filters);
-    expect(component.getFilters().includes(BookAvailabilityState.RESERVED_BY_YOU)).toBe(false);
+    expect(component.getFilters().includes(BookAvailabilityState.CHECKEDOUT_BY_YOU)).toBe(false);
     component.toggleShowReservedBooks();
-    expect(component.getFilters().includes(BookAvailabilityState.RESERVED_BY_YOU)).toBe(true);
+    expect(component.getFilters().includes(BookAvailabilityState.CHECKEDOUT_BY_YOU)).toBe(true);
     component.toggleShowReservedBooks();
-    expect(component.getFilters().includes(BookAvailabilityState.RESERVED_BY_YOU)).toBe(false);
+    expect(component.getFilters().includes(BookAvailabilityState.CHECKEDOUT_BY_YOU)).toBe(false);
   });
 
   it('should be able to toggle all filters correctly', () => {

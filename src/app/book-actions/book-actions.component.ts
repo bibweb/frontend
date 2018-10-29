@@ -21,8 +21,8 @@ export class BookActionsComponent {
   constructor(private bookService: BookService) {
   }
 
-  reserveBook() {
-    this.bookService.reserveBook(this.book).subscribe(() => {
+  checkoutBook() {
+    this.bookService.checkoutBook(this.book).subscribe(() => {
       this.bookService.getBook(this.book.id).subscribe(book => {
         this.book = book;
         this.update.emit(book);
@@ -32,8 +32,8 @@ export class BookActionsComponent {
     });
   }
 
-  removeReservation() {
-    this.bookService.removeReservation(this.book).subscribe(() => {
+  returnBook() {
+    this.bookService.returnBook(this.book).subscribe(() => {
       this.bookService.getBook(this.book.id).subscribe(book => {
         this.book = book;
         this.update.emit(book);
