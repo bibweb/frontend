@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {CustomHttpInterceptor} from './custom-http-interceptor.service';
 
@@ -25,6 +25,7 @@ import {BookListAvailabilityPipe} from './books/book-list-availability.pipe';
 import {ForbiddenPageAccessComponent} from './forbidden-page-access/forbidden-page-access.component';
 import {MessagesComponent} from './messages/messages.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
+import {UsersComponent} from './users/users.component';
 import {BookActionsComponent} from './book-actions/book-actions.component';
 import {TooltipModule} from 'ngx-bootstrap';
 
@@ -47,7 +48,8 @@ import {TooltipModule} from 'ngx-bootstrap';
     ForbiddenPageAccessComponent,
     MessagesComponent,
     SignUpComponent,
-    BookActionsComponent
+    BookActionsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

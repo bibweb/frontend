@@ -14,6 +14,7 @@ import {BookrequestsCreateComponent} from './bookrequests-create/bookrequests-cr
 import {UserRoles} from './model/userRoles';
 import {ForbiddenPageAccessComponent} from '@app/forbidden-page-access/forbidden-page-access.component';
 import {SignUpComponent} from '@app/sign-up/sign-up.component';
+import {UsersComponent} from '@app/users/users.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -33,7 +34,8 @@ const routes: Routes = [
   // Admin routes
   {
     path: '', canActivate: [AuthGuard, RoleGuard], data: {expectedRole: UserRoles.ADMIN}, children: [
-      {path: 'books/:id/update', component: BookUpdateComponent}
+      {path: 'books/:id/update', component: BookUpdateComponent},
+      {path: 'users', component: UsersComponent}
     ]
   },
 

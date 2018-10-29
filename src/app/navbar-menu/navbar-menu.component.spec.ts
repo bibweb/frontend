@@ -2,6 +2,7 @@ import {NavbarMenuComponent} from './navbar-menu.component';
 import {AuthService} from '../service/auth.service';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Router} from '@angular/router';
+import {HasRoleDirective} from '@app/directive/has-role.directive';
 
 describe('navbar-menu', () => {
   let component: NavbarMenuComponent;
@@ -10,11 +11,11 @@ describe('navbar-menu', () => {
   let router;
 
   beforeEach(async(() => {
-    authService = jasmine.createSpyObj('AuthService', ['isLoggedIn', 'getUserName']);
+    authService = jasmine.createSpyObj('AuthService', ['isLoggedIn', 'getUserName', 'hasRole']);
     router = {};
 
     TestBed.configureTestingModule({
-      declarations: [NavbarMenuComponent],
+      declarations: [NavbarMenuComponent, HasRoleDirective],
       providers: [
         {provide: AuthService, useValue: authService},
         {provide: Router, useValue: router}
