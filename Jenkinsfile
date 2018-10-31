@@ -19,6 +19,14 @@ pipeline {
         junit 'reports/**/*.xml'
       }
     }
+    stage('SonarQube Analysis') {
+      agent {
+        docker 'circleci/node:stretch-browsers'
+      }
+      steps {
+        sh 'npm run sonar'
+      }
+    }
     stage('Compile') {
       agent {
         docker 'circleci/node:stretch-browsers'
