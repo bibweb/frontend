@@ -20,6 +20,7 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
+      agent any
       steps {
         script {
           scannerHome = tool 'SonarQube Scanner 2.8'
