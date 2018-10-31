@@ -24,6 +24,7 @@ pipeline {
         docker 'circleci/node:stretch-browsers'
       }
       steps {
+        sh 'mkdir .sonar/'
         sh 'npm run sonar'
       }
     }
