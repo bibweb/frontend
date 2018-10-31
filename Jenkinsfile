@@ -24,7 +24,6 @@ pipeline {
         docker 'circleci/node:stretch-browsers'
       }
       steps {
-        sh 'npm install -g gulp-cli'
         sh 'gulp sonar'
       }
     }
