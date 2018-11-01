@@ -19,15 +19,18 @@ pipeline {
         junit 'reports/**/*.xml'
       }
     }
-    stage('SonarQube Analysis') {
+    stage('Copy SonarQube Scanner to workspace') {
       agent any
       steps {
-        script {
-          scannerHome = tool 'SonarQube Scanner 2.8'
-        }
-        withSonarQubeEnv('SonarQube Scanner') {
-          sh "${scannerHome}/bin/sonar-scanner"
-        }
+        sh 'cp -r /opt/sonar-scanner ./'
+      }
+    }
+    stage('Run SonarQube Analysis') {
+      agent {
+        docker 'circleci/node:stretch-browsers'
+      }
+      steps {
+        sh 'sonar-scanner/bin/sonar-scanner -Dsonar.host.url=http://172.17.0.1:9000/sonar'
       }
     }
     stage('Compile') {
