@@ -26,7 +26,7 @@ pipeline {
     }
     stage('Run SonarQube Analysis') {
       agent {
-        docker 'node:10.12.0-alpine'
+        docker 'circleci/node:stretch-browsers'
       }
       steps {
         sh 'sonar-scanner/bin/sonar-scanner -Dsonar.host.url=http://172.17.0.1:9000/sonar'
