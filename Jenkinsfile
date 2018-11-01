@@ -3,11 +3,10 @@ pipeline {
 	stages {
 	  stage('Fetch dependencies') {
 	    agent {
-	      docker 'circleci/node:stretch-browsers'
+	      docker 'node:10.12.0-alpine'
 	    }
 	    steps {
 	      sh 'yarn'
-	      stash includes: 'node_modules/', name: 'node_modules'
 	    }
     }
     stage('Unit Test') {
@@ -27,7 +26,7 @@ pipeline {
     }
     stage('Run SonarQube Analysis') {
       agent {
-        docker 'circleci/node:stretch-browsers'
+        docker 'node:10.12.0-alpine'
       }
       steps {
         sh 'sonar-scanner/bin/sonar-scanner -Dsonar.host.url=http://172.17.0.1:9000/sonar'
@@ -35,11 +34,10 @@ pipeline {
     }
     stage('Compile') {
       agent {
-        docker 'circleci/node:stretch-browsers'
+        docker 'node:10.12.0-alpine'
       }
       steps {
         sh 'yarn build:prod'
-        stash includes: 'dist/', name: 'dist'
       }
     }
     stage('Build Docker Image') {
