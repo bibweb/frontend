@@ -1,15 +1,15 @@
-import {BooksListComponent} from './books-list.component';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input, ViewChild} from '@angular/core';
-import {Book} from '../model/book';
 import {RouterTestingModule} from '@angular/router/testing';
+
+import {Book} from '../model';
 import {BookService} from '../services';
+import {BooksListComponent} from './books-list.component';
 
 describe('books-list', () => {
   @Component({
     selector: `app-host-component`,
-    template: `
-      <app-books-list (book)="selectBook($event)"></app-books-list>`
+    template: `<app-books-list (book)="selectBook($event)"></app-books-list>`
   })
   class TestHostComponent {
     @ViewChild(BooksListComponent)

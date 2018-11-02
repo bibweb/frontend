@@ -1,16 +1,17 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-import {BooksRoutingModule} from './books-routing.module';
-import {BooksComponent} from './books/index';
-import {BooksListComponent} from './books-list/index';
-import {BookListSearchPipe, BookListAvailabilityPipe} from './pipes/index';
-import {BooksSearchableListComponent} from './books-searchable-list/index';
-import {BookDetailComponent} from './book-detail/index';
-import {BookActionsComponent} from './book-actions/index';
-import {BookUpdateComponent} from './book-update/index';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import {SharedModule} from '@app/shared';
+
+import {BooksSearchableListComponent} from './books-searchable-list';
+import {BookListSearchPipe, BookListAvailabilityPipe} from './pipes';
+import {BooksRoutingModule} from './books-routing.module';
+import {BooksListComponent} from './books-list';
+import {BookDetailComponent} from './book-detail';
+import {BookActionsComponent} from './book-actions';
+import {BookUpdateComponent} from './book-update';
+import {BooksComponent} from './books';
 
 @NgModule({
   imports: [
@@ -23,11 +24,11 @@ import {SharedModule} from '@app/shared';
   declarations: [
     BooksComponent,
     BooksListComponent,
-    BookListSearchPipe,
     BooksSearchableListComponent,
     BookDetailComponent,
     BookActionsComponent,
     BookUpdateComponent,
+    BookListSearchPipe,
     BookListAvailabilityPipe
   ]
 })

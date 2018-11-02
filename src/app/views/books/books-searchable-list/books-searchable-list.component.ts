@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {Book} from '../model/index';
+import {Book} from '../model';
 
 @Component({
   selector: 'app-books-searchable-list',

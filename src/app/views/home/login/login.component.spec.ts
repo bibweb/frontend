@@ -17,7 +17,7 @@ describe('LoginComponent', () => {
   let activatedRoute;
 
   beforeEach(async(() => {
-    authService = jasmine.createSpyObj('AuthService', ['login', 'setSession', 'isLoggedIn']);
+    authService = jasmine.createSpyObj('AuthService', ['login', 'isLoggedIn']);
     router = {
       navigateByUrl: jasmine.createSpy('navigateByUrl')
     };
@@ -80,7 +80,6 @@ describe('LoginComponent', () => {
 
     expect(component.loginForm.valid).toBeTruthy();
     component.login();
-    expect(authService.setSession).toHaveBeenCalledWith('tset_token', 18318239183);
     expect(router.navigateByUrl).toHaveBeenCalledWith('/books');
   }));
 

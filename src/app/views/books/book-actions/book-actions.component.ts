@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Book} from '../model/book';
-import {BookAvailabilityState} from '../model';
-import {BookService} from '../services/book.service';
+
+import {Book, BookAvailabilityState} from '../model';
+import {BookService} from '../services';
 
 @Component({
   selector: 'app-book-actions',

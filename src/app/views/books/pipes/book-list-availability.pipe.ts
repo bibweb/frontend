@@ -1,6 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Book} from '../model/book';
-import {BookAvailabilityState} from '../model';
+import {Book, BookAvailabilityState} from '../model';
 
 @Pipe({
   name: 'bookListAvailabilityFilter'

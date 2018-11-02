@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {Book} from '../model/book';
-import {BookAvailabilityState} from '../model';
-import {BookService} from '../services/book.service';
 import {Router} from '@angular/router';
+
+import {Book, BookAvailabilityState} from '../model';
+import {BookService} from '../services';
 
 @Component({
   selector: 'app-books-list',

@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
+import {of} from 'rxjs';
+
 import {BooksComponent} from './books.component';
 import {BookService} from '../services';
-import {of} from 'rxjs';
-import {BookAvailabilityState} from '../model';
-import {Book} from '../model';
+import {Book, BookAvailabilityState} from '../model';
 
 describe('BooksComponent', () => {
   let fixture: ComponentFixture<BooksComponent>;
@@ -36,14 +36,13 @@ describe('BooksComponent', () => {
       declarations: [
         BooksComponent
       ]
-    });
-
-    fixture = TestBed.overrideComponent(BooksComponent, {
+    }).overrideComponent(BooksComponent, {
       set: {
         template: ''
-      }})
-      .createComponent(BooksComponent);
+      }
+    }).compileComponents();
   }));
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BooksComponent);
@@ -85,4 +84,5 @@ describe('BooksComponent', () => {
     expect(component.getFilters().length).toBe(0);
   });
 
-});
+})
+;

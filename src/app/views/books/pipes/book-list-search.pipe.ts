@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Book} from '../model/book';
+import {Book} from '../model';
 
 @Pipe({
   name: 'bookListSearchFilter'

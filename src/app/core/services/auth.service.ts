@@ -5,7 +5,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import * as moment from 'moment';
 
-import {LoginUser} from '@app/views/home/model';
+import {LoginUser} from '../model';
 
 import {environment} from '@env/environment';
 
@@ -25,8 +25,8 @@ export class AuthService {
 
   login(loginUser: LoginUser) {
     return this.http.post(this.authUrl, loginUser, httpOptions).pipe(
-      tap(() => {
-        console.log(`logged in user ${loginUser.username}`);
+      tap(data => {
+        this.setSession(data['token'], data['expiresIn']);
         this.failedLoginAttempts = 0;
       }),
       catchError(this.handleError<any>('login'))
@@ -37,7 +37,7 @@ export class AuthService {
     return this.failedLoginAttempts;
   }
 
-  public setSession(token: string, expiresIn: number) {
+  private setSession(token: string, expiresIn: number) {
     const expiresAt = moment().add(expiresIn, 'second');
     localStorage.setItem('id_token', token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));

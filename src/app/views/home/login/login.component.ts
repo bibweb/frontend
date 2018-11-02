@@ -33,17 +33,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.loginForm.value)
-      .subscribe(
-        (data) => {
-          if (data) {
-            this.authService.setSession(data['token'], data['expiresIn']);
-            this.router.navigateByUrl(this.returnUrl);
-          } else {
-            this.failedLoginAttempts = this.authService.getFailedLoginAttempts();
-          }
+    this.authService.login(this.loginForm.value).subscribe(data => {
+        if (data) {
+          this.router.navigateByUrl(this.returnUrl);
+        } else {
+          this.failedLoginAttempts = this.authService.getFailedLoginAttempts();
         }
-      );
+      }
+    );
   }
 
 }
