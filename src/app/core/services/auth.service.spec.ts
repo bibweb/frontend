@@ -32,7 +32,8 @@ describe('AuthService', () => {
   }));
 
   it('user should not be loggedIn', async(() => {
-    expect(service.isLoggedIn()).toBeFalsy();
+    const loggedIn = service.isLoggedIn();
+    expect(loggedIn).toBeFalsy();
   }));
 
   it('should login the user', async(() => {
