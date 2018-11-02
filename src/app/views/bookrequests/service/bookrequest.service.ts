@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class BookrequestService {
 
-  private bookRequestsURL = environment.bibwebApiUrl + '/bookrequest';
+  private bookRequestsURL = `${environment.bibwebApiUrl}/bookrequest`;
 
   constructor(private http: HttpClient) {
   }
@@ -20,7 +20,7 @@ export class BookrequestService {
   }
 
   getBookRequest(bookRequestId: number) {
-    return this.http.get<BookRequest>(this.bookRequestsURL + '/' + bookRequestId);
+    return this.http.get<BookRequest>(`${this.bookRequestsURL}/${bookRequestId}`);
   }
 
   createBookRequest(bookRequest: BookRequest) {
@@ -28,11 +28,11 @@ export class BookrequestService {
   }
 
   acceptBookRequest(bookRequest: BookRequest) {
-    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id + '/accept', bookRequest);
+    return this.http.put(`${this.bookRequestsURL}/${bookRequest.id}/accept`, bookRequest);
   }
 
   declineBookRequest(bookRequest: BookRequest) {
-    return this.http.put(this.bookRequestsURL + '/' + bookRequest.id + '/decline', bookRequest);
+    return this.http.put(`${this.bookRequestsURL}/${bookRequest.id}/decline`, bookRequest);
   }
 }
 

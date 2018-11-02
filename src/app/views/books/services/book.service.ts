@@ -25,18 +25,18 @@ export class BookService {
   }
 
   getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(this.booksUrl + '/' + id, httpOptions);
+    return this.http.get<Book>(`${this.booksUrl}/${id}`, httpOptions);
   }
 
   updateBook(book: Book): Observable<any> {
-    return this.http.put(this.booksUrl + '/' + book.id, book, httpOptions);
+    return this.http.put(`${this.booksUrl}/${book.id}`, book, httpOptions);
   }
 
   checkoutBook(book: Book): Observable<any> {
-    return this.http.put(this.booksUrl + '/' + book.id + '/checkouts', httpOptions);
+    return this.http.put(`${this.booksUrl}/${book.id}/checkouts`, httpOptions);
   }
 
   returnBook(book: Book): Observable<any> {
-    return this.http.delete(this.booksUrl + '/' + book.id + '/checkouts', httpOptions);
+    return this.http.delete(`${this.booksUrl}/${book.id}/checkouts`, httpOptions);
   }
 }
