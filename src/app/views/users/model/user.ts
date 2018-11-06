@@ -1,5 +1,5 @@
 export class User {
+  id: number;
   username: string;
-  enabled: boolean;
   roles: Object[];
 }
