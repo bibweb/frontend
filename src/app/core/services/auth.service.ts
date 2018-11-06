@@ -27,6 +27,7 @@ export class AuthService {
     return this.http.post(this.authUrl, loginUser, httpOptions).pipe(
       tap(data => {
         this.setSession(data['token'], data['expiresIn']);
+        this.loadUserProfile();
         this.failedLoginAttempts = 0;
       }),
       catchError(this.handleError<any>('login'))
@@ -43,16 +44,30 @@ export class AuthService {
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
+  private loadUserProfile() {
+    if(this.isLoggedIn()) {
+      if (localStorage.getItem('user') === null) {
+        this.http.get(environment.bibwebApiUrl + '/users/me', httpOptions).subscribe(
+          user => {
+            localStorage.setItem('user', JSON.stringify(user));
+          }
+        );
+      }
+    }
+  }
+
   public isLoggedIn() {
     if (localStorage.getItem('expires_at') === null) {
       return false;
     }
+
     return moment().isBefore(this.getExpiration());
   }
 
   public logout(): void {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('user');
   }
 
   public hasRole(role: string) {
@@ -66,6 +81,11 @@ export class AuthService {
     const decodedJwtData = JSON.parse(decodedJwtJsonData);
 
     return decodedJwtData.scopes.toString().includes(role.toString());
+  }
+
+  public getUserId(): number {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.id;
   }
 
   public getUserName(): string {

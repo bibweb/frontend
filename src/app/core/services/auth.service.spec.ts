@@ -40,6 +40,7 @@ describe('AuthService', () => {
     const token = 'tset_token';
     const expiresIn = 18318239183;
     const a = {'token': token, 'expiresIn': expiresIn};
+    const userObject = {'username': 'test', 'id': 4};
 
     service.login({username: 'test', password: 'test'}).subscribe(data => {
       expect(data).toBe(a);
@@ -53,6 +54,11 @@ describe('AuthService', () => {
     });
 
     req.flush(a);
+
+    backend.expectOne(request => {
+      return request.method === 'GET' && request.url.includes('/users/me');
+    }).flush(userObject);
+
   }));
 
 });

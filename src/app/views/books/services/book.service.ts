@@ -31,12 +31,4 @@ export class BookService {
   updateBook(book: Book): Observable<any> {
     return this.http.put(`${this.booksUrl}/${book.id}`, book, httpOptions);
   }
-
-  checkoutBook(book: Book): Observable<any> {
-    return this.http.put(`${this.booksUrl}/${book.id}/checkouts`, httpOptions);
-  }
-
-  returnBook(book: Book): Observable<any> {
-    return this.http.delete(`${this.booksUrl}/${book.id}/checkouts`, httpOptions);
-  }
 }
