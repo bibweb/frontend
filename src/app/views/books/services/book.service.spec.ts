@@ -21,6 +21,12 @@ describe('BookService', () => {
 
     service = TestBed.get(BookService);
     backend = TestBed.get(HttpTestingController);
+
+    const req = backend.expectOne(request => {
+      return request.url.includes('/books?onlyId');
+    });
+
+    req.flush([]);
   });
 
   afterEach(() => {
