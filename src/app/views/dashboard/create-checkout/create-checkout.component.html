@@ -1,0 +1,11 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="checkout()">
+
+  <div class="input-group">
+    <input type="text" class="form-control" formControlName="bookId" id="bookId" autocomplete="bookId" placeholder="Enter book id..." autofocus>
+
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit" [disabled]="!checkoutForm.valid">Checkout</button>
+    </span>
+  </div>
+
+</form>

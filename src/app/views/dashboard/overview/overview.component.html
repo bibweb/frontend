@@ -1,0 +1,7 @@
+<h2>Dashboard</h2>
+
+<app-create-checkout (create)="createNewCheckout($event)"></app-create-checkout>
+<br/>
+<app-checkouts-list [checkouts]="checkouts"></app-checkouts-list>
+
+<p>Showing data of user {{getUserId()}}</p>

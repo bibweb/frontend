@@ -24,7 +24,7 @@ export class BookActionsComponent {
   }
 
   checkoutBook() {
-    this.checkoutService.checkoutBook(this.book).subscribe(() => {
+    this.checkoutService.checkoutBook(this.book.id).subscribe(() => {
       this.bookService.getBook(this.book.id).subscribe(book => {
         this.book = book;
         this.update.emit(book);
@@ -35,7 +35,7 @@ export class BookActionsComponent {
   }
 
   returnBook() {
-    this.checkoutService.returnBook(this.book).subscribe(() => {
+    this.checkoutService.returnBook(this.book.id).subscribe(() => {
       this.bookService.getBook(this.book.id).subscribe(book => {
         this.book = book;
         this.update.emit(book);

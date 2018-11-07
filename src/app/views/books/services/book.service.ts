@@ -16,8 +16,13 @@ export class BookService {
 
   private booksUrl = environment.bibwebApiUrl + '/books';
 
+  bookIds: number[] = [];
+
   constructor(
     private http: HttpClient) {
+    this.getBookIds().subscribe(
+      bookIds => this.bookIds = bookIds
+    );
   }
 
   getBooks(): Observable<Book[]> {
@@ -30,5 +35,9 @@ export class BookService {
 
   updateBook(book: Book): Observable<any> {
     return this.http.put(`${this.booksUrl}/${book.id}`, book, httpOptions);
+  }
+
+  getBookIds(): Observable<number[]> {
+    return this.http.get<number[]>(`${this.booksUrl}?onlyId`, httpOptions);
   }
 }

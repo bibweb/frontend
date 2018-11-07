@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {environment} from '@env/environment';
-import {Book} from '@app/views/books/model';
 import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
 
@@ -17,11 +16,21 @@ export class CheckoutService {
               private authService: AuthService) {
   }
 
-  checkoutBook(book: Book): Observable<any> {
-    return this.http.put(`${environment.bibwebApiUrl}/users/${this.authService.getUserId()}/checkouts/books/${book.id}`, httpOptions);
+  checkoutBook(bookId: number, userId?: number): Observable<any> {
+    if(!userId) {
+      userId = this.authService.getUserId();
+    }
+    return this.http.put(`${environment.bibwebApiUrl}/users/${userId}/checkouts/books/${bookId}`, httpOptions);
   }
 
-  returnBook(book: Book): Observable<any> {
-    return this.http.delete(`${environment.bibwebApiUrl}/users/${this.authService.getUserId()}/checkouts/books/${book.id}`, httpOptions);
+  returnBook(bookId: number, userId?: number): Observable<any> {
+    if(!userId) {
+      userId = this.authService.getUserId();
+    }
+    return this.http.delete(`${environment.bibwebApiUrl}/users/${userId}/checkouts/books/${bookId}`, httpOptions);
+  }
+
+  getCheckoutsForUser(userId: number): Observable<any> {
+    return this.http.get(`${environment.bibwebApiUrl}/users/${userId}/checkouts`, httpOptions);
   }
 }

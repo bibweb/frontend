@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: 'books', loadChildren: './views/books/books.module#BooksModule'},
   {path: 'bookrequests', loadChildren: './views/bookrequests/bookrequests.module#BookrequestsModule'},
   {path: 'users', loadChildren: './views/users/users.module#UsersModule'},
+  {path: 'dashboard', loadChildren: './views/dashboard/dashboard.module#DashboardModule'},
 ];
 
 @NgModule({

@@ -52,7 +52,7 @@ describe('navbar-menu', () => {
     authService.getUserName.and.returnValue('test');
 
     fixture.detectChanges();
-    const spanUserName = fixture.nativeElement.querySelector('span#username');
+    const spanUserName = fixture.nativeElement.querySelector('a#username');
     expect(spanUserName.innerText).toBe('test');
   });
 
