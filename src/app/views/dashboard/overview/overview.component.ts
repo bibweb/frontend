@@ -2,13 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService, CheckoutService} from '@app/core';
 import {ActivatedRoute} from '@angular/router';
 
-import {filter} from 'rxjs/operators';
 import {Checkout} from '@app/views/dashboard/model';
 
 @Component({
   selector: 'app-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css']
+  templateUrl: './overview.component.html'
 })
 export class OverviewComponent implements OnInit {
 
