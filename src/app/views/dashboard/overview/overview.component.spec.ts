@@ -1,13 +1,10 @@
-import {CheckoutsListComponent} from '@app/views/dashboard/checkouts-list/checkouts-list.component';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {OverviewComponent} from '@app/views/dashboard/overview/overview.component';
-import {CreateCheckoutComponent} from '@app/views/dashboard/create-checkout/create-checkout.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService, CheckoutService} from '@app/core';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {BookIdValidator} from '@app/views/dashboard/create-checkout/validators/BookIdValidator';
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {Checkout} from '@app/views/dashboard/model';
 import {of} from 'rxjs';
@@ -28,7 +25,7 @@ class MockCreateCheckoutComponent {
   create = new EventEmitter<any>();
 }
 
-describe("Dashboard overview", () => {
+describe('Dashboard overview', () => {
 
   let component: OverviewComponent;
   let fixture: ComponentFixture<OverviewComponent>;
@@ -36,7 +33,6 @@ describe("Dashboard overview", () => {
   let authService;
   let checkoutService;
   let activatedRoute;
-  let bookIdValidator;
 
   beforeEach(async(() => {
     authService = jasmine.createSpyObj('AuthService', ['hasRole', 'getUserId']);
@@ -53,8 +49,7 @@ describe("Dashboard overview", () => {
       imports: [
         RouterTestingModule,
         FormsModule,
-        ReactiveFormsModule,
-        HttpClientTestingModule
+        ReactiveFormsModule
       ],
       providers: [
         {provide: AuthService, useValue: authService},
@@ -74,7 +69,7 @@ describe("Dashboard overview", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load checkouts and put them into checkouts list', async() => {
+  it('should load checkouts and put them into checkouts list', async () => {
     authService.hasRole.and.returnValue(false);
     authService.getUserId.and.returnValue(1);
     checkoutService.getCheckoutsForUser.and.returnValue(of(
@@ -86,4 +81,5 @@ describe("Dashboard overview", () => {
       expect(component.checkouts.length).toBe(2);
     });
   });
+
 });
