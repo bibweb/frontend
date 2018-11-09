@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
-import {Book, BookAvailabilityState} from '../model';
+import {Book, BookAvailabilityState, BookReservationState} from '../model';
 import {BookService} from '../services';
-import {CheckoutService} from '@app/core';
+import {ReservationService} from '@app/core';
 
 @Component({
   selector: 'app-book-actions',
@@ -17,13 +17,14 @@ export class BookActionsComponent {
   update = new EventEmitter<Book>();
 
   bookAvailabilityState = BookAvailabilityState; // used in template
+  bookReservationState = BookReservationState; // used in template
 
-  constructor(private checkoutService: CheckoutService,
+  constructor(private reservationService: ReservationService,
               private bookService: BookService) {
   }
 
-  checkoutBook() {
-    this.checkoutService.checkoutBook(this.book.id).subscribe(() => {
+  reserveBook() {
+    this.reservationService.reserveBook(this.book.id).subscribe(() => {
       this.bookService.getBook(this.book.id).subscribe(book => {
         this.book = book;
         this.update.emit(book);
@@ -33,8 +34,8 @@ export class BookActionsComponent {
     });
   }
 
-  returnBook() {
-    this.checkoutService.returnBook(this.book.id).subscribe(() => {
+  removeReservation() {
+    this.reservationService.removeReservation(this.book.id).subscribe(() => {
       this.bookService.getBook(this.book.id).subscribe(book => {
         this.book = book;
         this.update.emit(book);
