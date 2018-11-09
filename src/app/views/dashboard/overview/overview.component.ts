@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService, Checkout, CheckoutService} from '@app/core';
 import {ActivatedRoute} from '@angular/router';
+import {Book} from '@app/views/books/model';
 
 @Component({
   selector: 'app-overview',

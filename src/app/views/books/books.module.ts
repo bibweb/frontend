@@ -23,13 +23,16 @@ import {BooksComponent} from './books';
   ],
   declarations: [
     BooksComponent,
-    BooksListComponent,
     BooksSearchableListComponent,
     BookDetailComponent,
     BookActionsComponent,
     BookUpdateComponent,
     BookListSearchPipe,
-    BookListAvailabilityPipe
+    BookListAvailabilityPipe,
+    BooksListComponent
+  ],
+  exports: [
+    BooksListComponent
   ]
 })
 export class BooksModule {

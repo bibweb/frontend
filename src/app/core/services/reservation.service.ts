@@ -29,4 +29,11 @@ export class ReservationService {
     }
     return this.http.delete(`${environment.bibwebApiUrl}/users/${userId}/reservations/books/${bookId}`, httpOptions);
   }
+
+  getReservations(userId?: number): Observable<any> {
+    if(!userId) {
+      userId = this.authService.getUserId();
+    }
+    return this.http.get(`${environment.bibwebApiUrl}/users/${userId}/reservations`, httpOptions);
+  }
 }

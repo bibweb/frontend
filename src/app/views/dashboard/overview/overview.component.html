@@ -1,7 +1,29 @@
 <h2>Dashboard</h2>
 
-<app-create-checkout (create)="createNewCheckout($event)"></app-create-checkout>
-<br/>
-<app-checkouts-list [checkouts]="checkouts"></app-checkouts-list>
+<div class="container">
+  <div class="card">
+    <div class="card-header">Checkouts</div>
+    <div class="card-body">
+      <app-create-checkout (create)="createNewCheckout($event)"></app-create-checkout>
+      <br/>
+      <app-checkouts-list [checkouts]="checkouts"></app-checkouts-list>
+    </div>
+  </div>
+</div>
 
+<br/>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">Reservations</div>
+    <div class="card-body">
+      <app-reservations-list [user]="getUserId()"></app-reservations-list>
+    </div>
+  </div>
+</div>
+
+<br/>
 <p>Showing data of user {{getUserId()}}</p>
+
+
+
