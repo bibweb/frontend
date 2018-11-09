@@ -23,6 +23,14 @@ class MockCreateCheckoutComponent {
   create = new EventEmitter<any>();
 }
 
+@Directive({
+  selector: 'app-reservations-list'
+})
+class MockReservationsListComponent {
+  @Input()
+  user: number;
+}
+
 describe('Dashboard overview', () => {
 
   let component: OverviewComponent;
@@ -56,7 +64,8 @@ describe('Dashboard overview', () => {
       ],
       declarations: [OverviewComponent,
         MockCheckoutsListComponent,
-        MockCreateCheckoutComponent]
+        MockCreateCheckoutComponent,
+        MockReservationsListComponent]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(OverviewComponent);
       component = fixture.componentInstance;
