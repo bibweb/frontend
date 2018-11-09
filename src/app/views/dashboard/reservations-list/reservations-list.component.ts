@@ -10,7 +10,6 @@ import {BookService} from '@app/views/books/services';
 export class ReservationsListComponent implements OnInit {
 
   reservedBooks: Book[] = [];
-
   private reservations: Reservation[];
 
   constructor(private reservationService: ReservationService,
@@ -24,9 +23,11 @@ export class ReservationsListComponent implements OnInit {
     this.reservationService.getReservations(this.user).subscribe((reservations) => {
       this.reservations = reservations;
       this.reservations.forEach((item, index) => {
-        this.bookService.getBook(item.bookId).subscribe((book) => {
-          this.reservedBooks[index] = book;
-        })
+        if(item.active) {
+          this.bookService.getBook(item.bookId).subscribe((book) => {
+            this.reservedBooks.push(book);
+          });
+        }
       })
     })
   }

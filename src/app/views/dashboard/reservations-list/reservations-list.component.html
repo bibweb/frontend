@@ -1,1 +1,8 @@
-<app-books-list [books]="reservedBooks"></app-books-list>
+<div class="container" *ngIf="reservedBooks.length > 0">
+  <div class="card">
+    <div class="card-header">Reservations</div>
+    <div class="card-body">
+      <app-books-list [books]="reservedBooks"></app-books-list>
+    </div>
+  </div>
+</div>

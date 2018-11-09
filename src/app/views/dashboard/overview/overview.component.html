@@ -13,14 +13,7 @@
 
 <br/>
 
-<div class="container">
-  <div class="card">
-    <div class="card-header">Reservations</div>
-    <div class="card-body">
-      <app-reservations-list [user]="getUserId()"></app-reservations-list>
-    </div>
-  </div>
-</div>
+<app-reservations-list [user]="getUserId()"></app-reservations-list>
 
 <br/>
 <p>Showing data of user {{getUserId()}}</p>
