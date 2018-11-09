@@ -2,11 +2,9 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {OverviewComponent} from '@app/views/dashboard/overview/overview.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService, CheckoutService} from '@app/core';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {ActivatedRoute} from '@angular/router';
+import {AuthService, Checkout, CheckoutService} from '@app/core';
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {Checkout} from '@app/views/dashboard/model';
 import {of} from 'rxjs';
 
 @Directive({

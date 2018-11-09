@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService, CheckoutService} from '@app/core';
+import {AuthService, Checkout, CheckoutService} from '@app/core';
 import {ActivatedRoute} from '@angular/router';
-
-import {Checkout} from '@app/views/dashboard/model';
 
 @Component({
   selector: 'app-overview',
