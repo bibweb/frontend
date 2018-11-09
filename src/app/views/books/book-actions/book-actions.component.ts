@@ -6,8 +6,7 @@ import {CheckoutService} from '@app/core';
 
 @Component({
   selector: 'app-book-actions',
-  templateUrl: './book-actions.component.html',
-  styleUrls: ['./book-actions.component.css']
+  templateUrl: './book-actions.component.html'
 })
 export class BookActionsComponent {
 

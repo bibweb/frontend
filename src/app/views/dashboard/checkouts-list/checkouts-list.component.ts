@@ -3,8 +3,7 @@ import {Checkout} from '../model';
 
 @Component({
   selector: 'app-checkouts-list',
-  templateUrl: './checkouts-list.component.html',
-  styleUrls: ['./checkouts-list.component.css']
+  templateUrl: './checkouts-list.component.html'
 })
 export class CheckoutsListComponent implements OnInit {
 

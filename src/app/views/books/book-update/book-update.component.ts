@@ -8,8 +8,7 @@ import {BookService} from '../services/book.service';
 
 @Component({
   selector: 'app-book-update',
-  templateUrl: './book-update.component.html',
-  styleUrls: ['./book-update.component.css']
+  templateUrl: './book-update.component.html'
 })
 export class BookUpdateComponent implements OnInit {
   @Input() book: Book;

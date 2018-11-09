@@ -9,8 +9,7 @@ import {BookrequestService} from '../service';
 
 @Component({
   selector: 'app-bookrequests-create',
-  templateUrl: './bookrequests-create.component.html',
-  styleUrls: ['./bookrequests-create.component.css']
+  templateUrl: './bookrequests-create.component.html'
 })
 export class BookrequestsCreateComponent {
   createForm: FormGroup;

@@ -5,8 +5,7 @@ import {AuthService} from '@app/core';
 
 @Component({
   selector: 'app-navbar-menu',
-  templateUrl: './navbar-menu.component.html',
-  styleUrls: ['./navbar-menu.component.css']
+  templateUrl: './navbar-menu.component.html'
 })
 export class NavbarMenuComponent implements OnInit {
   loggedIn: boolean;

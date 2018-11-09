@@ -8,8 +8,7 @@ import {Checkout} from '@app/views/dashboard/model';
 
 @Component({
   selector: 'app-create-checkout',
-  templateUrl: './create-checkout.component.html',
-  styleUrls: ['./create-checkout.component.css']
+  templateUrl: './create-checkout.component.html'
 })
 export class CreateCheckoutComponent implements OnInit {
 

@@ -4,8 +4,7 @@ import {Book} from '../model';
 
 @Component({
   selector: 'app-books-searchable-list',
-  templateUrl: './books-searchable-list.component.html',
-  styleUrls: ['./books-searchable-list.component.css']
+  templateUrl: './books-searchable-list.component.html'
 })
 export class BooksSearchableListComponent {
 

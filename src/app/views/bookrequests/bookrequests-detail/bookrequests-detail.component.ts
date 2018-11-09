@@ -7,8 +7,7 @@ import {BookrequestService} from '../service';
 
 @Component({
   selector: 'app-bookrequests-detail',
-  templateUrl: './bookrequests-detail.component.html',
-  styleUrls: ['./bookrequests-detail.component.css']
+  templateUrl: './bookrequests-detail.component.html'
 })
 export class BookrequestsDetailComponent implements OnInit {
   bookRequest: BookRequest;
