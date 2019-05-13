@@ -11,6 +11,7 @@ export class OverviewComponent implements OnInit {
 
   private userId: number;
   checkouts: Checkout[];
+  selectedCheckouts: number[] = [];
 
   constructor(private authService: AuthService,
               private activatedRoute: ActivatedRoute,
@@ -40,5 +41,10 @@ export class OverviewComponent implements OnInit {
 
   createNewCheckout(bookId) {
     this.checkoutService.checkoutBook(bookId, this.userId).subscribe(value => this.loadCheckouts());
+  }
+
+  changeSelectedCheckout(checkouts) {
+    console.log(this.selectedCheckouts);
+    this.selectedCheckouts = checkouts;
   }
 }

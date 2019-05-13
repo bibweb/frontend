@@ -6,7 +6,8 @@
     <div class="card-body">
       <app-create-checkout (create)="createNewCheckout($event)"></app-create-checkout>
       <br/>
-      <app-checkouts-list [checkouts]="checkouts"></app-checkouts-list>
+      <app-checkouts-list [checkouts]="checkouts" (changeSelected)="changeSelectedCheckout($event)"></app-checkouts-list>
+      <app-checkout-actions [selectedCheckouts]="selectedCheckouts"></app-checkout-actions>
     </div>
   </div>
 </div>

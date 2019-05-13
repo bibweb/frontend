@@ -8,7 +8,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let checkout of checkouts">
+  <tr (click)="clickCheckout(checkout.id)" [ngClass]="{'table-info': selectedCheckoutId.includes(checkout.id)}" *ngFor="let checkout of checkouts">
     <td>{{checkout.bookId}}</td>
     <td>{{checkout.bookTitle}}</td>
     <td>{{checkout.checkoutDate | date}}</td>

@@ -9,13 +9,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BookIdValidator} from '@app/views/dashboard/create-checkout/validators/BookIdValidator';
 import {BooksModule} from '@app/views/books/books.module';
 import {ReservationsListComponent} from '@app/views/dashboard/reservations-list/reservations-list.component';
+import {CheckoutActionsComponent} from '@app/views/dashboard/checkout-actions/checkout-actions.component';
 
 @NgModule({
   declarations: [
     OverviewComponent,
     CheckoutsListComponent,
     CreateCheckoutComponent,
-    ReservationsListComponent
+    ReservationsListComponent,
+    CheckoutActionsComponent
   ],
   imports: [
     CommonModule,
